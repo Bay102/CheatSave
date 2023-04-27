@@ -1,0 +1,49 @@
+{
+  "Users": [
+    {
+      "username": "Zak",
+      "password": "coding",
+      "id": 1
+    },
+    {
+      "username": "hi",
+      "password": "hi",
+      "id": 2
+    },
+    {
+      "username": "hihds",
+      "password": "jkdskhs",
+      "id": 3
+    },
+    {
+      "username": "zak bay",
+      "password": "djksa",
+      "id": 4
+    },
+    {
+      "username": "zak bay",
+      "password": "dshskjha",
+      "id": 5
+    },
+    {
+      "username": "hi",
+      "password": "hello",
+      "id": 6
+    },
+    {
+      "username": "zak",
+      "password": "zak",
+      "id": 7
+    },
+    {
+      "username": "zak",
+      "password": "zack",
+      "id": 8
+    }
+  ],
+  "Posts": [
+    {
+      "user": "zak"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+/* .user_form_container {
+   width: 400px;
+   height: 500px;
+   background-color: lightblue;
+} */
+
+.user_form_inputs {
+   display: flex;
+   flex-direction: column;
+   width: 200px;
+   margin: auto;
+}
+
+.user_form_inputs input {
+   margin: 10px auto;
+   border-radius: 5px;
+   padding: 5px;
+   width: 200px;
+}
+
+.user_form_inputs button {
+   width: 100px;
+   margin: 10px auto;
+}

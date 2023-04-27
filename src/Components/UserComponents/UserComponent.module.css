@@ -1,0 +1,21 @@
+.user_components_container {
+   width: 600px;
+   height: 500px;
+   background-color: #5b5956;
+}
+
+/* .nav_container {
+ 
+} */
+
+.nav_list {
+   display: flex;
+   text-align: center;
+   gap: 10px;
+   justify-content: center;
+}
+
+li {
+   list-style: none;
+   text-decoration: none;
+}
