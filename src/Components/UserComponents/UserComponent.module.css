@@ -1,6 +1,6 @@
 .user_components_container {
    width: 600px;
-   height: 500px;
+   height: 600px;
    background-color: #5b5956;
 }
 
@@ -8,11 +8,17 @@
  
 } */
 
-.nav_list {
+.userIcon {
+
+   font-size: 30px;
+}
+
+.user_icon {
+      position: absolute;
+   right: 215px;
+   top: 50px;
    display: flex;
-   text-align: center;
-   gap: 10px;
-   justify-content: center;
+   flex-direction: column-reverse;
 }
 
 li {

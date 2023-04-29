@@ -6,39 +6,24 @@
       "id": 1
     },
     {
-      "username": "hi",
-      "password": "hi",
+      "username": "charlie",
+      "password": "zak",
       "id": 2
     },
     {
-      "username": "hihds",
-      "password": "jkdskhs",
+      "username": "zak",
+      "password": "coder",
       "id": 3
     },
     {
-      "username": "zak bay",
-      "password": "djksa",
+      "username": "user",
+      "password": "five",
       "id": 4
     },
     {
-      "username": "zak bay",
-      "password": "dshskjha",
+      "username": "charlie",
+      "password": "youyou",
       "id": 5
-    },
-    {
-      "username": "hi",
-      "password": "hello",
-      "id": 6
-    },
-    {
-      "username": "zak",
-      "password": "zak",
-      "id": 7
-    },
-    {
-      "username": "zak",
-      "password": "zack",
-      "id": 8
     }
   ],
   "Posts": [

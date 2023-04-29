@@ -8,6 +8,7 @@ import { getUserFromServer } from '../Api/User/get-user';
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
+
   const [user, setUser] = useState(null);
 
   const register = ({ username, password }: RegisterParams) => {
@@ -29,13 +30,8 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   }, []);
 
   const logIn = async ({ username, password } : {username: string, password: string}) => {
-    const user = await getUserFromServer({ username,});
-
+    const user = await getUserFromServer({ username });
     console.log(user);
-    console.log(user.userPassword);
-    
-    console.log(password);
-    
     
     if (user.password !== password) {
       throw new Error("invalid password")
@@ -51,6 +47,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       toast.info('Logged Out');
     }
   };
+
 
   return (
     <AuthContext.Provider value={{ user, setUser, register, logOut , logIn}}>

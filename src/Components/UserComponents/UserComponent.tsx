@@ -1,36 +1,37 @@
 import React, { useState } from 'react';
 import styles from './UserComponent.module.css';
-import { SignUp } from './SignUP/SignUp';
-import { Login } from './Login/Login';
-import { LogoutButton } from '../LogoutButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { Navbar } from '../Navbar/Navbar';
+import { useAppProvider } from '../../Providers/App.Provider.context';
+import { useAuthProvider } from '../../Providers/Auth.Provider.context';
 
 export const UserComponent: React.FC = () => {
-  const [display, setDisplay] = useState<string>('login')
+  
+  const { setDisplay , showNav, setShowNav}: any = useAppProvider();
+  const { user }: any = useAuthProvider();
 
-  const navbarOptions: any = {
-    login: (<Login />),
-    signUp: (<SignUp />),
+  const navDisplay = () => {
+    if (showNav === true) {
+      setShowNav(false);
+    } else setShowNav(true);
+    setDisplay('');
   };
 
   return (
     <div className={styles.user_components_container}>
-      <div className={styles.nav_container}>
-        <ul className={styles.nav_list}>
-          <li>
-            <button onClick={() => setDisplay('login')}>Login</button>
-          </li>
-          <li>
-            <button onClick={() => setDisplay('signUp')}>SignUp</button>
-          </li>
-          <li>
-          <LogoutButton />
-          </li>
-        </ul>
+      <div className={styles.user_icon}>
+       <div className="user_name"> 
+       {user && user.username}
+        </div> 
+        <FontAwesomeIcon
+          className={styles.userIcon}
+          style={{ cursor: 'pointer' }}
+          onClick={() => navDisplay()}
+          icon={faCircleUser}
+        />
       </div>
-
-      <div className="register_container">
-        {navbarOptions[display]}
-      </div>
+        <Navbar  />
     </div>
   );
 };
