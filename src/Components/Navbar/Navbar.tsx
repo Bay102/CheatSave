@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { useAppProvider } from '../../Providers/App.Provider.context';
 
-export const Navbar = () => {
+export const Navbar : React.FC = () => {
 
   const { user }: any = useAuthProvider();
   const { display, setDisplay , showNav}: any = useAppProvider();
@@ -24,9 +24,11 @@ export const Navbar = () => {
       <div
         className={styles.nav_container}
       >
-        <ul className={`${styles.nav_list} ${
-          showNav ? styles.nav_container_hidden : ''
-        }`}>
+        <ul className={styles.nav_container}>
+{/* 
+`${styles.nav_list} ${
+          showNav ? styles.nav_container_hidden :null
+        }` */}
           <li>
             <button onClick={() => setDisplay('login')}>Login</button>
           </li>

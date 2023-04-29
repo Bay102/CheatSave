@@ -7,23 +7,20 @@ import { useAppProvider } from '../../Providers/App.Provider.context';
 import { useAuthProvider } from '../../Providers/Auth.Provider.context';
 
 export const UserComponent: React.FC = () => {
-  
-  const { setDisplay , showNav, setShowNav}: any = useAppProvider();
+  const { setDisplay, showNav, setShowNav }: any = useAppProvider();
   const { user }: any = useAuthProvider();
 
   const navDisplay = () => {
     if (showNav === true) {
       setShowNav(false);
     } else setShowNav(true);
-    setDisplay('');
+    // setDisplay('');
   };
 
   return (
     <div className={styles.user_components_container}>
       <div className={styles.user_icon}>
-       <div className="user_name"> 
-       {user && user.username}
-        </div> 
+        <div className="user_name">{user ? user.username : 'Account'}</div>
         <FontAwesomeIcon
           className={styles.userIcon}
           style={{ cursor: 'pointer' }}
@@ -31,7 +28,8 @@ export const UserComponent: React.FC = () => {
           icon={faCircleUser}
         />
       </div>
-        <Navbar  />
+    {showNav && <Navbar />}  
+    {/* <Navbar /> */}
     </div>
   );
 };

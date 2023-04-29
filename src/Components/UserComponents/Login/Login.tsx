@@ -20,7 +20,6 @@ export const Login: React.FC = () => {
           logIn({ username: username, password: userPassword }).catch((e: any) => {
             toast.error(e.message);
           });
-          setDisplay('')
         }}
         className={''}
         action=""
