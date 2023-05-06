@@ -6,24 +6,27 @@ import { toast } from 'react-toastify';
 import { useAppProvider } from '../../Providers/App.Provider.context';
 import { NewGameFormProps } from '../../Types';
 import { API_CONFIG } from '../../Api/config';
+import { useUserCodesProvider } from '../../Providers/UserCodes.Provider';
 
 export const UserNewCodeForm: React.FC<NewGameFormProps> = ({ setShowNewGame }) => {
   const [gameTitle, setGameTitle] = useState('');
-  const [console, setConsole] = useState(+0);
+  const [console, setConsole] = useState('');
   const [codeTitle, setCodeTitle] = useState('');
   const [code, setCode] = useState('');
 
   const { user }: any = useAuthProvider();
-
-  const consoleOptions = ['Select...','XboxOne', 'PS4', 'PC', 'Nintendo Switch'];
+  const { fetchCodes }: any = useUserCodesProvider();
+  const consoleOptions = ['Select...', 'XboxOne', 'PS4', 'PC', 'Nintendo Switch'];
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (gameTitle && console) {
-          addGame(gameTitle, console, codeTitle, code), 
-          setGameTitle('');
+        if (gameTitle && codeTitle && console) {
+          addGame(gameTitle, console, codeTitle, code, user.id).then(() =>
+            fetchCodes()
+          ),
+            setGameTitle('');
           setConsole('');
           setCodeTitle('');
           setCode('');
@@ -43,7 +46,12 @@ export const UserNewCodeForm: React.FC<NewGameFormProps> = ({ setShowNewGame }) 
         </label>
         <label htmlFor="console">
           Console:
-          <select onChange={(e) => setConsole(e.target.value)} value={console} name="" id="">
+          <select
+            onChange={(e) => setConsole(e.target.value)}
+            value={console}
+            name=""
+            id=""
+          >
             {consoleOptions.map((console, index) => (
               <option value={index} key={console}>
                 {console}

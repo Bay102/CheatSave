@@ -4,13 +4,15 @@ export const addGame = (
   gameTitle: string,
   console: any,
   codeTitle: string,
-  code: string
+  code: string,
+  userId: number
 ) => {
   const newCode = {
     gameTitle: gameTitle,
     consoleId: console,
     codeTitle: codeTitle,
-    code: code
+    code: code,
+    userId: userId,
   };
 
   return fetch(API_CONFIG.baseUrl + `/users_CheatCodes`, {
