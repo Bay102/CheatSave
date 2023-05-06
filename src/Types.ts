@@ -8,3 +8,7 @@ export type User = {
   password: string;
   id: number 
 }
+
+export type NewGameFormProps = {
+  setShowNewGame: React.Dispatch<React.SetStateAction<boolean>>;
+}

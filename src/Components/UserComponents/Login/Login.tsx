@@ -10,7 +10,7 @@ export const Login: React.FC = () => {
   const [userPassword, setUserPassword] = useState<string>('');
 
   const { logIn }: any = useAuthProvider();
-  const { setDisplay }: any = useAppProvider();
+  const { setShowNav }: any = useAppProvider();
 
   return (
     <>
@@ -20,6 +20,7 @@ export const Login: React.FC = () => {
           logIn({ username: username, password: userPassword }).catch((e: any) => {
             toast.error(e.message);
           });
+          setShowNav(false);
         }}
         className={''}
         action=""

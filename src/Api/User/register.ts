@@ -21,3 +21,4 @@ return fetch(API_CONFIG.baseUrl + '/Users', {
     return response.json();
   });
 };
+

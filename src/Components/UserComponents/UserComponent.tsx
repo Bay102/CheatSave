@@ -5,6 +5,7 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { Navbar } from '../Navbar/Navbar';
 import { useAppProvider } from '../../Providers/App.Provider.context';
 import { useAuthProvider } from '../../Providers/Auth.Provider.context';
+import { UserData } from './UserData/UserData';
 
 export const UserComponent: React.FC = () => {
   const { setDisplay, showNav, setShowNav }: any = useAppProvider();
@@ -20,7 +21,7 @@ export const UserComponent: React.FC = () => {
   return (
     <div className={styles.user_components_container}>
       <div className={styles.user_icon}>
-        <div className="user_name">{user ? user.username : 'Account'}</div>
+        <div className="user_name">{user ? user.username : 'SignIn'}</div>
         <FontAwesomeIcon
           className={styles.userIcon}
           style={{ cursor: 'pointer' }}
@@ -28,8 +29,8 @@ export const UserComponent: React.FC = () => {
           icon={faCircleUser}
         />
       </div>
-    {showNav && <Navbar />}  
-    {/* <Navbar /> */}
+      {showNav && <Navbar />}
+      <div className="user_data_container">{user && <UserData />}</div>
     </div>
   );
 };

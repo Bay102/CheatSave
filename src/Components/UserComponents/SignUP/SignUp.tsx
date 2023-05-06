@@ -3,12 +3,21 @@ import styles from './SignUp.module.css';
 import { useAuthProvider } from '../../../Providers/Auth.Provider.context';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAppProvider } from '../../../Providers/App.Provider.context';
 
 export const SignUp: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
+  const { setShowNav }: any = useAppProvider();
+
 
   const { register } : any = useAuthProvider();
+
+  const userObject = {
+    username: username,
+    password: userPassword,
+    games: []
+  }
 
   return (
     <>
@@ -17,7 +26,8 @@ export const SignUp: React.FC = () => {
           e.preventDefault();
           setUsername('');
           setUserPassword('');
-          register({ username: username, password: userPassword }).then(() => {
+          setShowNav(false)
+          register(userObject).then(() => {
            toast.success('Registration successful!');
           })
           .catch((error: any) => {

@@ -3,7 +3,7 @@ import { API_CONFIG } from '../config';
 import { User } from '../../Types';
 
 export const getUserFromServer = ({ username }: { username: string }) =>
-  fetch('http://localhost:3000/Users')
+  fetch('http://localhost:3000/users')
     .then((response) => {
       if (!response.ok) {
         throw new Error('Error finding user');
