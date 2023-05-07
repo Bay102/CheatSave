@@ -1,25 +1,19 @@
 .user_components_container {
    position: relative;
-   width: 600px;
+   width: 650px;
    height: 600px;
    background-color: #5b5956;
 }
 
-/* .nav_container {
- 
-} */
-
 .userIcon {
-
    font-size: 20px;
 }
 
 .user_icon {
    position: absolute;
    right: 0px;
-   top: -30px;
+   top: 5px;
    display: flex;
-   /* flex-direction: column-reverse; */
    background-color: black;
    padding: 3px 10px;
    border-radius: 10px;

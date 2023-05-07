@@ -11,4 +11,5 @@ export type User = {
 
 export type NewGameFormProps = {
   setShowNewGame: React.Dispatch<React.SetStateAction<boolean>>;
+  showNewGame: any
 }

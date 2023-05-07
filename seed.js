@@ -5,8 +5,13 @@ const data = {
     {
       id: 1,
       username: 'zak',
-      password: 'coding',
+      password: 'fake',
     },
+    {
+      id: 2,
+      username: 'jon',
+      password: 'fake',
+    }
   ],
   consoles: [
     {
@@ -18,11 +23,11 @@ const data = {
       console: 'PS4',
     },
     {
-      id: 4,
-      console: 'PS5',
+      id: 3,
+      console: 'PC',
     },
     {
-      id: 5,
+      id: 4,
       console: 'Nintendo Switch',
     },
   ],
@@ -36,10 +41,10 @@ const data = {
       id: 1
     },
     {
-      gameTitle: "Sims 4",
-      consoleId: '3',
-      codeTitle: "More Money",
-      code: "down-up-right-right-R1-R2",
+      gameTitle: "SpiderMan",
+      consoleId: '2',
+      codeTitle: "Health",
+      code: "down-up-right-R1-R2",
       userId: 1,
       id: 2
     },
@@ -56,8 +61,16 @@ const data = {
       consoleId: '4',
       codeTitle: "More Money",
       code: "down-up-right-right-R1-R2",
-      userId: 1,
+      userId: 2,
       id: 4
+    },
+    {
+      gameTitle: "Stardew Valley",
+      consoleId: '3',
+      codeTitle: "More Money",
+      code: "down-up-right-right-R1-R2",
+      userId: 1,
+      id: 5
     }
     
   ],

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './UserComponent.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
@@ -7,8 +7,9 @@ import { useAppProvider } from '../../Providers/App.Provider.context';
 import { useAuthProvider } from '../../Providers/Auth.Provider.context';
 import { UserData } from './UserData/UserData';
 
+
 export const UserComponent: React.FC = () => {
-  const { setDisplay, showNav, setShowNav }: any = useAppProvider();
+  const { showNav, setShowNav }: any = useAppProvider();
   const { user }: any = useAuthProvider();
 
   const navDisplay = () => {

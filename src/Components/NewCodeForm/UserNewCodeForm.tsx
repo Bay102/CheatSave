@@ -3,18 +3,17 @@ import styles from './UserNewCodeForm.module.css';
 import { addGame } from '../../Api/add-game';
 import { useAuthProvider } from '../../Providers/Auth.Provider.context';
 import { toast } from 'react-toastify';
-import { useAppProvider } from '../../Providers/App.Provider.context';
-import { NewGameFormProps } from '../../Types';
-import { API_CONFIG } from '../../Api/config';
 import { useUserCodesProvider } from '../../Providers/UserCodes.Provider';
+import { useAppProvider } from '../../Providers/App.Provider.context';
 
-export const UserNewCodeForm: React.FC<NewGameFormProps> = ({ setShowNewGame }) => {
+export const UserNewCodeForm: React.FC = () => {
   const [gameTitle, setGameTitle] = useState('');
   const [console, setConsole] = useState(undefined);
   const [codeTitle, setCodeTitle] = useState('');
   const [code, setCode] = useState('');
 
-  const { user }: any = useAuthProvider();
+  const { setShowNewGame }: any = useAppProvider();
+  const { user } : any = useAuthProvider();
   const { fetchCodes }: any = useUserCodesProvider();
 
   const consoleOptions = ['Select...', 'XboxOne', 'PS4', 'PC', 'Nintendo Switch'];
