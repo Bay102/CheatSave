@@ -10,12 +10,13 @@ import { useUserCodesProvider } from '../../Providers/UserCodes.Provider';
 
 export const UserNewCodeForm: React.FC<NewGameFormProps> = ({ setShowNewGame }) => {
   const [gameTitle, setGameTitle] = useState('');
-  const [console, setConsole] = useState('');
+  const [console, setConsole] = useState(undefined);
   const [codeTitle, setCodeTitle] = useState('');
   const [code, setCode] = useState('');
 
   const { user }: any = useAuthProvider();
   const { fetchCodes }: any = useUserCodesProvider();
+
   const consoleOptions = ['Select...', 'XboxOne', 'PS4', 'PC', 'Nintendo Switch'];
 
   return (
@@ -26,8 +27,8 @@ export const UserNewCodeForm: React.FC<NewGameFormProps> = ({ setShowNewGame }) 
           addGame(gameTitle, console, codeTitle, code, user.id).then(() =>
             fetchCodes()
           ),
-            setGameTitle('');
-          setConsole('');
+          setGameTitle('');
+          setConsole(undefined);
           setCodeTitle('');
           setCode('');
           setShowNewGame(false);

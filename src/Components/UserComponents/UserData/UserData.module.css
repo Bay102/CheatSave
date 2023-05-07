@@ -37,15 +37,43 @@ h2 { margin: 0;}
   /* background-color: white; */
 }
 
+.games_container {
+   display: flex;
+   gap: 10px;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.code_container {
+   display: flex;
+   justify-content: space-between;
+   border: 2px solid black;
+   border-radius: 10px;
+   width: 95%;
+   margin: auto;
+   padding: 10px;
+   background-color: white;
+   color: black;
+   font-size: 13px;
+}
+
+.code_container button {
+   font-size: 11px;
+   padding: 5px;
+}
+
 .game_name {
    display: flex;
    justify-content: space-around;
    align-items: center;
-   width: 100%;
-   border: 1px solid black;
 }
 
 .game_name div {
    font-size:20px ;
    cursor: pointer;
+}
+
+.game_code {
+   font-weight: 700;
+   font-size: 14px;
 }

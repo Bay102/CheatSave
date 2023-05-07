@@ -5,15 +5,35 @@ import { useAppProvider } from '../../../Providers/App.Provider.context';
 import { UserNewCodeForm } from '../../NewCodeForm/UserNewCodeForm';
 import { getUsersCodes } from '../../../Api/User/get-users-codes';
 import { useUserCodesProvider } from '../../../Providers/UserCodes.Provider';
+import { deleteCheat } from '../../../Api/User/delete-cheat';
 
 export const UserData: React.FC = () => {
-
-  const { fetchCodes, usersCodes } : any = useUserCodesProvider()
+  const { fetchCodes, usersCodes }: any = useUserCodesProvider();
   const [showNewGame, setShowNewGame] = useState(false);
 
   useEffect(() => {
-    fetchCodes()
+    fetchCodes();
   }, []);
+
+  const setConsoleTitle = (consoleId: string) => {
+    switch (consoleId) {
+      case '1':
+        return 'Xbox One';
+      case '2':
+        return 'PS4';
+      case '3':
+        return 'PC';
+      case '4':
+        return 'Nintendo Switch';
+      default:
+        return 'Unknown Console';
+    }
+  };
+
+  const handleDelete = (event) => {
+    const id = event.currentTarget.dataset.id
+    deleteCheat(id).then((codes) => fetchCodes(codes));
+  };
 
   return (
     <>
@@ -29,17 +49,24 @@ export const UserData: React.FC = () => {
             + New Code
           </button>
         </div>
-        <div className="games_container">
+        <div className={styles.games_container}>
           {showNewGame && <UserNewCodeForm setShowNewGame={setShowNewGame} />}
           {usersCodes &&
-            usersCodes.map((game: any, gameIndex: number) => (
-              <div key={gameIndex}>
-                <div className={styles.game_name}>{game.gameTitle}</div>
-                {/* {game.codes.map((code: any, codeIndex: number) => (
-                  <div key={`${gameIndex}-${codeIndex}`}>
-                    {code.title}:{code.code}
-                  </div>
-                ))} */}
+            usersCodes.map((code: any, gameIndex: number) => (
+              <div className={styles.code_container} key={gameIndex}>
+                <div className={styles.game_name}>{code.gameTitle}:</div>
+                <div className={styles.game_console}>
+                  {setConsoleTitle(code.consoleId)}:
+                </div>
+                <div className={styles.game_codeTitle}>{code.codeTitle}:</div>
+                <div className={styles.game_code}>{code.code}</div>
+                <button
+                  data-id={code.id}
+                  onClick={(e) => handleDelete(e)}
+                  type="button"
+                >
+                  Delete
+                </button>
               </div>
             ))}
         </div>

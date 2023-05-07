@@ -28,26 +28,38 @@ const data = {
   ],
   users_CheatCodes: [
     {
-      id: 1,
-      gameTitle: 'GTA 4',
-      code: 'X-A-L1',
-      consoleId: 1,
+      gameTitle: "GTA 4",
+      consoleId: '1',
+      codeTitle: "Max Stamina",
+      code: "left-left-right-right-R1-R2",
       userId: 1,
+      id: 1
     },
     {
-      id: 2,
-      gameTitle: 'Red Dead Redemption 2',
-      code: 'X-A-L1',
-      consoleId: 1,
+      gameTitle: "Sims 4",
+      consoleId: '3',
+      codeTitle: "More Money",
+      code: "down-up-right-right-R1-R2",
       userId: 1,
+      id: 2
     },
     {
-      id: 3,
-      gameTitle: 'Sims 4',
-      code: 'X-A-L1',
-      consoleId: 2,
+      gameTitle: "Saints Row 3",
+      consoleId: '4',
+      codeTitle: "More Money",
+      code: "down-up-right-right-R1-R2",
       userId: 1,
+      id: 3
     },
+    {
+      gameTitle: "Saints Row 3",
+      consoleId: '4',
+      codeTitle: "More Money",
+      code: "down-up-right-right-R1-R2",
+      userId: 1,
+      id: 4
+    }
+    
   ],
 };
 

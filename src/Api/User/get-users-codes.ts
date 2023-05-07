@@ -1,4 +1,4 @@
-export const getUsersCodes = (userId: any) =>
+export const getUsersCodes = (userId: number) =>
   fetch('http://localhost:3000/users_CheatCodes')
     .then((response) => {
       if (!response.ok) {
@@ -11,7 +11,7 @@ export const getUsersCodes = (userId: any) =>
     .then((codes) => {
       console.log(codes);
       if (!codes) {
-        throw new Error('no user found');
+        throw new Error('Error Finding Codes');
       }
 
       return codes;
