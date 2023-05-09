@@ -18,22 +18,25 @@ export const UserNewCodeForm: React.FC = () => {
 
   const consoleOptions = ['Select...', 'XboxOne', 'PS4', 'PC', 'Nintendo Switch'];
 
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (gameTitle && codeTitle && console) {
+  const handleCodeSubmit = () => {
+     if (gameTitle && codeTitle && console && code) {
           addGame(gameTitle, console, codeTitle, code, user.id).then(() =>
             fetchCodes()
-          ),
+          );
           setGameTitle('');
           setConsole(undefined);
           setCodeTitle('');
           setCode('');
           setShowNewGame(false);
-        } else toast('Fields are empty');
+        } else toast('All fields are required');
+  }
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleCodeSubmit();
       }}
-      action=""
     >
       <div className={styles.add_game_container}>
         <label htmlFor="title">
@@ -47,7 +50,7 @@ export const UserNewCodeForm: React.FC = () => {
         <label htmlFor="console">
           Console:
           <select
-            onChange={(e) => setConsole(e.target.value)}
+            onChange={(e: any) => setConsole(e.target.value)}
             value={console}
             name=""
             id=""

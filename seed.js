@@ -71,8 +71,39 @@ const data = {
       code: "down-up-right-right-R1-R2",
       userId: 1,
       id: 5
+    },
+    {
+      gameTitle: "Pokemon",
+      consoleId: '4',
+      codeTitle: "Skip Intro",
+      code: "B05557898BBD",
+      userId: 1,
+      id: 6
+    },
+    {
+      gameTitle: "Pokemon",
+      consoleId: '4',
+      codeTitle: "Skip Intro",
+      code: "B05557898BBD",
+      userId: 2,
+      id: 7
+    },
+    {
+      gameTitle: "The Sims",
+      consoleId: '3',
+      codeTitle: "Money",
+      code: "RoseBud",
+      userId: 2,
+      id: 8
+    },
+    {
+      gameTitle: "The Sims",
+      consoleId: '3',
+      codeTitle: "Money",
+      code: "RoseBud",
+      userId: 1,
+      id: 9
     }
-    
   ],
 };
 

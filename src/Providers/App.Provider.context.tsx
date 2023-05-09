@@ -6,7 +6,6 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
   const [display, setDisplay] = useState<string>('');
   const [showNav, setShowNav] = useState<boolean>(false);
   const [showNewGame, setShowNewGame] = useState(false);
-  const [usersCodes, setUsersCodes] = useState([]);
 
   return (
     <AppContext.Provider

@@ -7,10 +7,13 @@ import { getUsersCodes } from '../../../Api/User/get-users-codes';
 import { useUserCodesProvider } from '../../../Providers/UserCodes.Provider';
 import { deleteCheat } from '../../../Api/User/delete-cheat';
 import { CodeFilter } from '../../CodeFilter/CodeFilter';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { CheatCode } from '../../../Types';
 
 export const UserData: React.FC = () => {
-  const { showNewGame, setShowNewGame }: any = useAppProvider();
-  const { fetchCodes, usersCodes }: any = useUserCodesProvider();
+  const { showNewGame }: any = useAppProvider();
+  const { fetchCodes, usersCodes, handleDelete }: any = useUserCodesProvider();
 
   useEffect(() => {
     fetchCodes();
@@ -31,13 +34,6 @@ export const UserData: React.FC = () => {
     }
   };
 
-  const handleDelete = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const id = event.currentTarget.dataset.id;
-    console.log(typeof(id));
-     
-    deleteCheat(id).then((codes) => fetchCodes(codes));
-  };
-
   return (
     <>
       <div className={styles.my_cheats_container}>
@@ -48,7 +44,7 @@ export const UserData: React.FC = () => {
           {showNewGame && <UserNewCodeForm />}
           {<CodeFilter />}
           {usersCodes &&
-            usersCodes.map((code: any, gameIndex: number) => (
+            usersCodes.map((code: CheatCode, gameIndex: number) => (
               <div className={styles.code_container} key={gameIndex}>
                 <div className={styles.name_console}>
                   <div className={styles.game_name}>{code.gameTitle}</div>
@@ -61,10 +57,10 @@ export const UserData: React.FC = () => {
                 <div className={styles.game_code}>{code.code}</div>
                 <button
                   data-id={code.id}
-                  onClick={(e) => handleDelete(e)}
+                  onClick={(event) => handleDelete(event)}
                   type="button"
                 >
-                  Delete
+                  <FontAwesomeIcon icon={faTrashCan} style={{color: "#d30909",}} />
                 </button>
               </div>
             ))}

@@ -61,8 +61,9 @@ h2 {
 }
 
 .code_container button {
-  font-size: 11px;
-  padding: 5px;
+  font-size: 14px;
+  padding: 3px;
+  background-color: white;
 }
 
 .game_name {

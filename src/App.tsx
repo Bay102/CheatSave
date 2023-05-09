@@ -15,7 +15,7 @@ function App() {
           <>
             <div className="App">
               <ToastContainer />
-              {/* <CheatCC /> */}
+              <CheatCC />
               <UserComponent />
             </div>
           </>
