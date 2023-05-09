@@ -13,23 +13,19 @@ export const UserNewCodeForm: React.FC = () => {
   const [code, setCode] = useState('');
 
   const { setShowNewGame }: any = useAppProvider();
-  const { user } : any = useAuthProvider();
-  const { fetchCodes }: any = useUserCodesProvider();
-
-  const consoleOptions = ['Select...', 'XboxOne', 'PS4', 'PC', 'Nintendo Switch'];
+  const { user }: any = useAuthProvider();
+  const { fetchCodes, consoleOptions }: any = useUserCodesProvider();
 
   const handleCodeSubmit = () => {
-     if (gameTitle && codeTitle && console && code) {
-          addGame(gameTitle, console, codeTitle, code, user.id).then(() =>
-            fetchCodes()
-          );
-          setGameTitle('');
-          setConsole(undefined);
-          setCodeTitle('');
-          setCode('');
-          setShowNewGame(false);
-        } else toast('All fields are required');
-  }
+    if (gameTitle && codeTitle && console && code) {
+      addGame(gameTitle, console, codeTitle, code, user.id).then(() => fetchCodes());
+      setGameTitle('');
+      setConsole(undefined);
+      setCodeTitle('');
+      setCode('');
+      setShowNewGame(false);
+    } else toast('All fields are required');
+  };
 
   return (
     <form
@@ -55,7 +51,8 @@ export const UserNewCodeForm: React.FC = () => {
             name=""
             id=""
           >
-            {consoleOptions.map((console, index) => (
+            <option value="">Select...</option>
+            {consoleOptions.map((console: string, index: number) => (
               <option value={index} key={console}>
                 {console}
               </option>
@@ -70,7 +67,16 @@ export const UserNewCodeForm: React.FC = () => {
           Code:
           <input onChange={(e) => setCode(e.target.value)} type="text" />
         </label>
-        <button type="submit">Add Code</button>
+        <div className={styles.form_buttons}>
+          <button
+            onClick={() => setShowNewGame(false)}
+            type="button"
+            className={styles.close}
+          >
+            Close
+          </button>
+          <button type="submit">Add Code</button>
+        </div>
       </div>
     </form>
   );

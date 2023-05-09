@@ -6,49 +6,12 @@ import { CheatCode } from '../Types';
 
 const UserCodesContext = createContext({});
 
-// export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
-//   const { user }: any = useAuthProvider();
-//   const [usersCodes, setUsersCodes] = useState([]);
-//   const [userSearch, setUserSearch] = useState('');
-
-//   const fetchCodes = () => {
-//     getUsersCodes(user.id).then((codes) => setUsersCodes(codes));
-//   };
-
-//   const handleDelete = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-//     const id = event.currentTarget.dataset.id;
-//     deleteCheat(id).then(() => fetchCodes());
-//   };
-
-//   const handleFilter = () => {
-//     const filteredCodes = usersCodes.filter((code: CheatCode) =>
-//       code.gameTitle.toLowerCase().includes(userSearch.toLowerCase())
-//     );
-//     setUsersCodes(filteredCodes);
-//   };
-
-//   return (
-//     <UserCodesContext.Provider
-//       value={{
-//         fetchCodes,
-//         usersCodes,
-//         setUsersCodes,
-//         handleDelete,
-//         userSearch,
-//         setUserSearch,
-//         handleFilter,
-//       }}
-//     >
-//       {children}
-//     </UserCodesContext.Provider>
-//   );
-// };
-
-
 export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
   const { user }: any = useAuthProvider();
   const [usersCodes, setUsersCodes] = useState([]);
   const [userSearch, setUserSearch] = useState('');
+
+  const consoleOptions = ['XboxOne', 'PS4', 'PC', 'Nintendo Switch'];
 
   const fetchCodes = () => {
     getUsersCodes(user.id).then((codes) => setUsersCodes(codes));
@@ -58,13 +21,13 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
     deleteCheat(id).then(() => fetchCodes());
   };
 
-  const filterCodes = (codes: CheatCode[], searchTerm: string) => {
+  const filterCodesByGame = (codes: CheatCode[], searchTerm: string) => {
     return codes.filter((code: CheatCode) =>
       code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase())
     );
   };
 
-  const filteredCodes = filterCodes(usersCodes, userSearch);
+  const filteredCodes = filterCodesByGame(usersCodes, userSearch);
 
   return (
     <UserCodesContext.Provider
@@ -74,14 +37,12 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
         handleDelete,
         userSearch,
         setUserSearch,
+        consoleOptions,
       }}
     >
       {children}
     </UserCodesContext.Provider>
   );
 };
-
-
-
 
 export const useUserCodesProvider = () => useContext(UserCodesContext);

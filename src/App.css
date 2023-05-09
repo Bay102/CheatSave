@@ -11,6 +11,12 @@
   font-family: monospace;
 }
 
+select {
+  height: 30px;
+  border-radius: 20px;
+  padding: 5px;
+}
+
 
 
 

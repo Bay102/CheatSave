@@ -5,7 +5,7 @@ import { useAppProvider } from '../../Providers/App.Provider.context';
 import { useUserCodesProvider } from '../../Providers/UserCodes.Provider';
 
 export const CodeFilter: React.FC = () => {
-  const { userSearch, setUserSearch }: any = useUserCodesProvider();
+  const { userSearch, setUserSearch, consoleOptions }: any = useUserCodesProvider();
 
   const { showNewGame, setShowNewGame }: any = useAppProvider();
 
@@ -19,8 +19,11 @@ export const CodeFilter: React.FC = () => {
         }}
         placeholder="Search By Game..."
       />
-      <select name="console" id="">
-         {}
+      <select name="console" id="" placeholder='Sear'>
+        <option value="">Select..</option>
+        {consoleOptions.map((console: string, index: number) => (
+          <option value={''} key={index}>{console}</option>
+        ))}
       </select>
 
       <button
