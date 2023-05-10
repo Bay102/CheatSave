@@ -22,3 +22,8 @@ export type CheatCode = {
   userId: number;
   id: number;
 };
+
+export type Console = {
+  id: number,
+  console: string
+}

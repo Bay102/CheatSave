@@ -10,24 +10,49 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
   const { user }: any = useAuthProvider();
   const [usersCodes, setUsersCodes] = useState([]);
   const [userSearch, setUserSearch] = useState('');
-
-  const consoleOptions = ['XboxOne', 'PS4', 'PC', 'Nintendo Switch'];
+  const [consoleFilter, setConsoleFilter] = useState('')
 
   const fetchCodes = () => {
     getUsersCodes(user.id).then((codes) => setUsersCodes(codes));
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const id = event.currentTarget.dataset.id;
     deleteCheat(id).then(() => fetchCodes());
   };
 
-  const filterCodesByGame = (codes: CheatCode[], searchTerm: string) => {
-    return codes.filter((code: CheatCode) =>
-      code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  };
+  // const filterCodesByGame = (codes: CheatCode[], searchTerm: string) => {
+  //   return codes.filter((code: CheatCode) =>
+  //     code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase())
+  //   );
+  // };
 
-  const filteredCodes = filterCodesByGame(usersCodes, userSearch);
+  // const filterCodes = (codes: CheatCode[], searchTerm: string, consoleID: string) => {
+  //   if (consoleFilter) {
+  //     return codes.filter((code: CheatCode) => code.consoleId === consoleID ) 
+  //   }
+  //   return codes.filter((code: CheatCode) =>
+  //     code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase())
+  //   );
+  // };
+
+  const filterCodes = (codes: CheatCode[], searchTerm: string, consoleID: string) => {
+    if (searchTerm && consoleID) {
+      return codes.filter((code: CheatCode) =>
+        code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase()) && code.consoleId === consoleID
+      );
+    } else if (searchTerm) {
+      return codes.filter((code: CheatCode) =>
+        code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    } else if (consoleID) {
+      return codes.filter((code: CheatCode) => code.consoleId === consoleID);
+    }
+    return codes;
+  };
+  
+ 
+  const filteredCodes = filterCodes(usersCodes, userSearch, consoleFilter);
 
   return (
     <UserCodesContext.Provider
@@ -37,7 +62,8 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
         handleDelete,
         userSearch,
         setUserSearch,
-        consoleOptions,
+        consoleFilter,
+        setConsoleFilter
       }}
     >
       {children}

@@ -12,7 +12,7 @@ export const UserNewCodeForm: React.FC = () => {
   const [codeTitle, setCodeTitle] = useState('');
   const [code, setCode] = useState('');
 
-  const { setShowNewGame }: any = useAppProvider();
+  const { setShowNewGame, consoles }: any = useAppProvider();
   const { user }: any = useAuthProvider();
   const { fetchCodes, consoleOptions }: any = useUserCodesProvider();
 
@@ -51,10 +51,10 @@ export const UserNewCodeForm: React.FC = () => {
             name=""
             id=""
           >
-            <option value="">Select...</option>
-            {consoleOptions.map((console: string, index: number) => (
-              <option value={index} key={console}>
-                {console}
+            <option>Select...</option>
+            {consoles.map((console: any, index: number) => (
+              <option value={index} key={index}>
+                {console.console}
               </option>
             ))}
           </select>
