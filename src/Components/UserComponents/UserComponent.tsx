@@ -12,12 +12,6 @@ export const UserComponent: React.FC = () => {
   const { showNav, setShowNav }: any = useAppProvider();
   const { user }: any = useAuthProvider();
 
-  // const navDisplay = () => {
-  //   if (showNav === true) {
-  //     setShowNav(false);
-  //   } else setShowNav(true);
-  // };
-
   return (
     <div className={styles.user_components_container}>
       <div className={styles.user_icon}>
@@ -25,7 +19,6 @@ export const UserComponent: React.FC = () => {
         <FontAwesomeIcon
           className={styles.userIcon}
           style={{ cursor: 'pointer' }}
-          // onClick={() => navDisplay()}
           onClick={() => showNav ? setShowNav(false) : setShowNav(true)}
           icon={faCircleUser}
         />

@@ -3,6 +3,7 @@
    width: 650px;
    height: 600px;
    background-color: #5b5956;
+   overflow: scroll;
 }
 
 .userIcon {
