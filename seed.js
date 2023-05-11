@@ -103,6 +103,14 @@ const data = {
       code: "RoseBud",
       userId: 1,
       id: 9
+    },
+    {
+      gameTitle: "The Sims",
+      consoleId: '3',
+      codeTitle: "Speed Up Time",
+      code: "Speed",
+      userId: 1,
+      id: 10
     }
   ],
 };

@@ -44,6 +44,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 150px;
 }
 
 .code_container {
@@ -58,6 +59,7 @@ h2 {
   background-color: white;
   color: black;
   font-size: 13px;
+  text-align: left;
 }
 
 .code_container button {
@@ -84,4 +86,8 @@ h2 {
 
 .game_console {
    font-size: 10px;
+}
+
+.game_codeTitle {
+  text-align: left;
 }

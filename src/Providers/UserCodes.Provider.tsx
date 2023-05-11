@@ -7,10 +7,10 @@ import { CheatCode } from '../Types';
 const UserCodesContext = createContext({});
 
 export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
-  const { user }: any = useAuthProvider();
+  const { user } : any  = useAuthProvider();
   const [usersCodes, setUsersCodes] = useState([]);
   const [userSearch, setUserSearch] = useState('');
-  const [consoleFilter, setConsoleFilter] = useState('')
+  const [consoleFilter, setConsoleFilter] = useState('');
 
   const fetchCodes = () => {
     getUsersCodes(user.id).then((codes) => setUsersCodes(codes));
@@ -21,25 +21,12 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
     deleteCheat(id).then(() => fetchCodes());
   };
 
-  // const filterCodesByGame = (codes: CheatCode[], searchTerm: string) => {
-  //   return codes.filter((code: CheatCode) =>
-  //     code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
-  // };
-
-  // const filterCodes = (codes: CheatCode[], searchTerm: string, consoleID: string) => {
-  //   if (consoleFilter) {
-  //     return codes.filter((code: CheatCode) => code.consoleId === consoleID ) 
-  //   }
-  //   return codes.filter((code: CheatCode) =>
-  //     code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
-  // };
-
   const filterCodes = (codes: CheatCode[], searchTerm: string, consoleID: string) => {
     if (searchTerm && consoleID) {
-      return codes.filter((code: CheatCode) =>
-        code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase()) && code.consoleId === consoleID
+      return codes.filter(
+        (code: CheatCode) =>
+          code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase()) &&
+          code.consoleId === consoleID
       );
     } else if (searchTerm) {
       return codes.filter((code: CheatCode) =>
@@ -50,8 +37,7 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
     }
     return codes;
   };
-  
- 
+
   const filteredCodes = filterCodes(usersCodes, userSearch, consoleFilter);
 
   return (
@@ -63,7 +49,7 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
         userSearch,
         setUserSearch,
         consoleFilter,
-        setConsoleFilter
+        setConsoleFilter,
       }}
     >
       {children}

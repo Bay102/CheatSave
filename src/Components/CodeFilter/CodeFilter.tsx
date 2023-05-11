@@ -12,31 +12,36 @@ export const CodeFilter: React.FC = () => {
 
   return (
     <div className={styles.code_filter_container}>
-      <input
-        type="search"
-        value={userSearch}
-        onChange={(e) => {
-          setUserSearch(e.target.value);
-        }}
-        placeholder="Search By Game..."
-      />
-      <select
-       name="console" 
-       id="" 
-       value={consoleFilter}
-       onChange={(e) => setConsoleFilter(e.target.value)}
-       >
-        <option>Select..</option>
-        {consoles.map((console: any, index: number) => (
-          <option value={index + 1} key={index}>
-            {console.console}
-          </option>
-        ))}
-      </select>
+      <label htmlFor="">
+        Search By Game:
+        <input
+          type="search"
+          value={userSearch}
+          onChange={(e) => {
+            setUserSearch(e.target.value);
+          }}
+          placeholder="Search By Game..."
+        />
+      </label>
 
-      <button
-        onClick={() => (showNewGame ? setShowNewGame(false) : setShowNewGame(true))}
-      >
+      <label htmlFor="">
+        By Console:
+        <select
+          name="console"
+          id=""
+          value={consoleFilter}
+          onChange={(e) => setConsoleFilter(e.target.value)}
+        >
+          <option value={''}>Select..</option>
+          {consoles.map((console: any, index: number) => (
+            <option value={index + 1} key={index}>
+              {console.console}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <button onClick={() => (showNewGame ? setShowNewGame(false) : setShowNewGame(true))}>
         + New Code
       </button>
     </div>
