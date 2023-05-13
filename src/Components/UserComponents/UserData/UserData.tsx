@@ -10,6 +10,8 @@ import { CodeFilter } from '../../CodeFilter/CodeFilter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { CheatCode } from '../../../Types';
+import classNames from 'classnames';
+
 
 export const UserData: React.FC = () => {
   const { showNewGame }: any = useAppProvider();
@@ -45,7 +47,7 @@ export const UserData: React.FC = () => {
           {<CodeFilter />}
           {usersCodes &&
             usersCodes.map((code: CheatCode, gameIndex: number) => (
-              <div className={styles.code_container} key={gameIndex}>
+<div className={classNames(styles.code_container, styles['hvr-shutter-out-vertical'])} key={gameIndex}>
                 <div className={styles.name_console}>
                   <div className={styles.game_name}>{code.gameTitle}</div>
                   <div className={styles.game_console}>

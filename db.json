@@ -32,14 +32,6 @@
   "games": [],
   "users_CheatCodes": [
     {
-      "gameTitle": "GTA 5",
-      "consoleId": "1",
-      "codeTitle": "Invincibility",
-      "code": "Enter Right, A, Right, Left, Right, RB, Right, Left, A, Y",
-      "userId": 1,
-      "id": 1
-    },
-    {
       "gameTitle": "SpiderMan",
       "consoleId": "2",
       "codeTitle": "Health",
