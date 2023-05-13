@@ -12,13 +12,11 @@ function App() {
     <AuthProvider>
       <AppProvider>
         <UserCodesProvider>
-          <>
             <div className="App"> 
               <ToastContainer />
               <CheatCC />
               <UserComponent />
             </div>
-          </>
         </UserCodesProvider>
       </AppProvider>
     </AuthProvider>
