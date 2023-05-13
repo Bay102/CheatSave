@@ -12,10 +12,9 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { CheatCode } from '../../../Types';
 import classNames from 'classnames';
 
-
 export const UserData: React.FC = () => {
   const { showNewGame }: any = useAppProvider();
-  const { fetchCodes, usersCodes, handleDelete }: any = useUserCodesProvider();
+  const { fetchCodes, usersCodes, handleDelete, setUsersCodes }: any = useUserCodesProvider();
 
   useEffect(() => {
     fetchCodes();
@@ -36,6 +35,31 @@ export const UserData: React.FC = () => {
     }
   };
 
+  const [dragIndex, setDragIndex] : any = useState(null);
+  const [hoverIndex, setHoverIndex] : any = useState(null);
+
+  const handleDragStart = (e, index) => {
+    setDragIndex(index);
+  };
+
+  const handleDragOver = (e, index) => {
+    e.preventDefault();
+    setHoverIndex(index);
+  };
+
+  const handleDrop = (e, index) => {
+    e.preventDefault();
+    const newItems = [...usersCodes];
+    const draggedItem = newItems[dragIndex];
+    newItems.splice(dragIndex, 1);
+    newItems.splice(index, 0, draggedItem);
+    setUsersCodes(newItems);
+    setDragIndex(null);
+    setHoverIndex(null);
+  };
+
+
+
   return (
     <>
       <div className={styles.my_cheats_container}>
@@ -45,27 +69,33 @@ export const UserData: React.FC = () => {
         <div className={styles.games_container}>
           {showNewGame && <UserNewCodeForm />}
           {<CodeFilter />}
+          <ul>
           {usersCodes &&
             usersCodes.map((code: CheatCode, gameIndex: number) => (
-<div className={classNames(styles.code_container, styles['hvr-shutter-out-vertical'])} key={gameIndex}>
+              <li
+                className={classNames(styles.code_container, styles['hvr-shutter-out-vertical'],styles['hvr-hang'])}
+                key={gameIndex}
+                draggable={true}
+                onDragStart={(e) => handleDragStart(e, gameIndex)}
+                onDragOver={(e) => handleDragOver(e, gameIndex)}
+                onDrop={(e) => handleDrop(e, gameIndex)}
+                style={{
+                  opacity: dragIndex === gameIndex ? 0.5 : 1,
+                  backgroundColor: hoverIndex === gameIndex ? 'lightgray' : 'white'
+                }}
+              >
                 <div className={styles.name_console}>
                   <div className={styles.game_name}>{code.gameTitle}</div>
-                  <div className={styles.game_console}>
-                    {setConsoleTitle(code.consoleId)}
-                  </div>
+                  <div className={styles.game_console}>{setConsoleTitle(code.consoleId)}</div>
                 </div>
-
                 <div className={styles.game_codeTitle}>{code.codeTitle}:</div>
                 <div className={styles.game_code}>{code.code}</div>
-                <button
-                  data-id={code.id}
-                  onClick={(event) => handleDelete(event)}
-                  type="button"
-                >
-                  <FontAwesomeIcon icon={faTrashCan} style={{color: "#d30909",}} />
+                <button data-id={code.id} onClick={(event) => handleDelete(event)} type="button">
+                  <FontAwesomeIcon icon={faTrashCan} style={{ color: '#d30909' }} />
                 </button>
-              </div>
+              </li>
             ))}
+          </ul>
         </div>
       </div>
     </>

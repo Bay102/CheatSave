@@ -45,6 +45,7 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
       value={{
         fetchCodes,
         usersCodes: filteredCodes,
+        setUsersCodes,
         handleDelete,
         userSearch,
         setUserSearch,
