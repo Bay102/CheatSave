@@ -10,7 +10,7 @@ import { UserData } from './UserData/UserData';
 
 export const UserComponent: React.FC = () => {
   const { showNav, setShowNav }: any = useAppProvider();
-  const { user }: any = useAuthProvider();
+  const { user } = useAuthProvider();
 
   return (
     <div className={styles.user_components_container}>

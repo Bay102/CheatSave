@@ -1,3 +1,17 @@
+export type AuthContextType = {
+  user: User | null;
+  setUser:  React.Dispatch<React.SetStateAction<null>>
+  register: (input: RegisterParams) => void | Promise<void>;
+  logOut: () => void;
+  logIn: ({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }) => Promise<void>;
+};
+
 export type RegisterParams = {
   username: string;
   password: string;

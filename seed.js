@@ -4,8 +4,8 @@ const data = {
   users: [
     {
       id: 1,
-      username: 'zak',
-      password: 'fake',
+      username: 'doomslayer',
+      password: 'dog',
     },
     {
       id: 2,
@@ -30,6 +30,9 @@ const data = {
       id: 4,
       console: 'Nintendo Switch',
     },
+  ],
+  games: [
+
   ],
   users_CheatCodes: [
     {

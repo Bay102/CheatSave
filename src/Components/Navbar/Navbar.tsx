@@ -33,7 +33,7 @@ export const Navbar : React.FC = () => {
             <button onClick={() => setDisplay('login')}>Login</button>
           </li>
           <li>
-            <button onClick={() => setDisplay('signUp')}>SignUp</button>
+            <button onClick={() => setDisplay('signUp')}>New Account</button>
           </li>
           <li>
             <LogoutButton />

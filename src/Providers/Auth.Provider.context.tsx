@@ -1,11 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { registerFetch } from '../Api/User/register';
-import { RegisterParams } from '../Types';
+import { AuthContextType, RegisterParams, User } from '../Types';
 import { toast } from 'react-toastify';
 import { getUserFromServer } from '../Api/User/get-user';
 
-const AuthContext = createContext({});
+
+
+const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState(null);
@@ -28,7 +30,13 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     }
   }, []);
 
-  const logIn = async ({ username, password }: { username: string; password: string }) => {
+  const logIn = async ({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }) => {
     const user = await getUserFromServer({ username });
     if (user.password !== password) {
       throw new Error('invalid password');

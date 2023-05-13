@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "username": "zak",
-      "password": "fake"
+      "username": "doomslayer",
+      "password": "dog"
     },
     {
       "id": 2,
@@ -29,6 +29,7 @@
       "console": "Nintendo Switch"
     }
   ],
+  "games": [],
   "users_CheatCodes": [
     {
       "gameTitle": "GTA 5",

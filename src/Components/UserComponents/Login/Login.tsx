@@ -37,7 +37,7 @@ export const Login: React.FC = () => {
               onChange={(e) => setUserPassword(e.target.value)}
               value={userPassword}
               placeholder="Password"
-              type="text"
+              type="password"
             />
             <LogInButton />
             {/* <button type="submit">Sign In</button> */}
