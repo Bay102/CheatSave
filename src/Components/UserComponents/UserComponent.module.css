@@ -1,7 +1,8 @@
 .user_components_container {
    position: relative;
-   width: 650px;
-   height: 600px;
+   width: 60%;
+   min-width: 60%;
+   height: 100vh;
    background-color: #5b5956;
    overflow: scroll;
 }

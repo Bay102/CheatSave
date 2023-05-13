@@ -1,11 +1,17 @@
 #root {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
+  height: 100vh;
+}
+
+body {
+  overflow: hidden;
 }
 
 .App {
+  position: relative;
   display: flex;
   gap: 10px;
   font-family: monospace;
@@ -16,6 +22,7 @@ select {
   /* border-radius: 20px; */
   padding: 5px;
 }
+
 
 
 

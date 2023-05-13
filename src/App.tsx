@@ -13,7 +13,7 @@ function App() {
       <AppProvider>
         <UserCodesProvider>
           <>
-            <div className="App">
+            <div className="App"> 
               <ToastContainer />
               <CheatCC />
               <UserComponent />

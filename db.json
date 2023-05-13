@@ -9,11 +9,6 @@
       "id": 2,
       "username": "jon",
       "password": "fake"
-    },
-    {
-      "username": "Charels",
-      "password": "Password",
-      "id": 3
     }
   ],
   "consoles": [
