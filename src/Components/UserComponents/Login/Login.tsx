@@ -9,17 +9,19 @@ export const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
 
-  const { logIn }: any = useAuthProvider();
-  const { setShowNav }: any = useAppProvider();
+  const { logIn } = useAuthProvider();
+  const { setShowNav } = useAppProvider();
 
   return (
     <>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          logIn({ username: username, password: userPassword }).catch((e: any) => {
-            toast.error(e.message);
-          });
+          logIn({ username: username, password: userPassword }).catch(
+            (e: any) => {
+              toast.error(e.message);
+            }
+          );
           setShowNav(false);
         }}
         className={''}

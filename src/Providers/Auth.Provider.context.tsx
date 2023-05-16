@@ -5,8 +5,6 @@ import { AuthContextType, RegisterParams, User } from '../Types';
 import { toast } from 'react-toastify';
 import { getUserFromServer } from '../Api/User/get-user';
 
-
-
 const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {

@@ -8,16 +8,14 @@ import { useAppProvider } from '../../../Providers/App.Provider.context';
 export const SignUp: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
-  const { setShowNav }: any = useAppProvider();
 
+  const { setShowNav } = useAppProvider();
+  const { register } = useAuthProvider();
 
-  const { register } : any = useAuthProvider();
-
-  const userObject = {
+  const userCredentials = {
     username: username,
     password: userPassword,
-    games: []
-  }
+  };
 
   return (
     <>
@@ -26,18 +24,18 @@ export const SignUp: React.FC = () => {
           e.preventDefault();
           setUsername('');
           setUserPassword('');
-          setShowNav(false)
-          register(userObject).then(() => {
-           toast.success('Registration successful!');
-          })
-          .catch((error: any) => {
-            toast.error(error.message);
-          });
+          setShowNav(false);
+          register(userCredentials)
+            .then(() => {
+              toast.success('Registration successful!');
+            })
+            .catch((error: any) => {
+              toast.error(error.message);
+            });
         }}
         className={styles.user_form}
         action=""
       >
-
         <div className={styles.user_form_container}>
           <div className={styles.user_form_inputs}>
             <input
@@ -50,12 +48,11 @@ export const SignUp: React.FC = () => {
               onChange={(e) => setUserPassword(e.target.value)}
               value={userPassword}
               placeholder="Password"
-              type="text"
+              type="password"
             />
             <button type="submit">Register</button>
           </div>
         </div>
-
       </form>
     </>
   );

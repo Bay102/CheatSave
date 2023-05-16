@@ -7,9 +7,8 @@ import { useAppProvider } from '../../Providers/App.Provider.context';
 import { useAuthProvider } from '../../Providers/Auth.Provider.context';
 import { UserData } from './UserData/UserData';
 
-
 export const UserComponent: React.FC = () => {
-  const { showNav, setShowNav }: any = useAppProvider();
+  const { showNav, setShowNav } = useAppProvider();
   const { user } = useAuthProvider();
 
   return (
@@ -19,7 +18,7 @@ export const UserComponent: React.FC = () => {
         <FontAwesomeIcon
           className={styles.userIcon}
           style={{ cursor: 'pointer' }}
-          onClick={() => showNav ? setShowNav(false) : setShowNav(true)}
+          onClick={() => (showNav ? setShowNav(false) : setShowNav(true))}
           icon={faCircleUser}
         />
       </div>

@@ -1,5 +1,3 @@
-
-
 h2 {
   margin: 0;
 }
@@ -33,7 +31,6 @@ h2 {
   border: 1px solid black;
   display: flex;
   align-items: baseline;
-  /* background-color: white; */
 }
 
 .games_container {
@@ -52,14 +49,13 @@ h2 {
 
 .code_container {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   border: 2px solid black;
   border-radius: 10px;
   width: 95%;
   margin: auto;
   padding: 10px;
-  background-color: white;
+  background-color: rgb(254, 249, 249);
   color: black;
   font-size: 13px;
   text-align: left;
@@ -68,6 +64,7 @@ h2 {
 
 .code_container:hover {
 background-color: black;
+cursor: pointer;
 }
 
 .code_container button {
@@ -113,7 +110,7 @@ background-color: black;
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
-  background: #e1e1e1;
+  /* background: #e1e1e1; */
   -webkit-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.3s;
@@ -129,7 +126,7 @@ background-color: black;
   bottom: 0;
   left: 0;
   right: 0;
-  background: #b819ed;
+  background: #09020b;
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50%;
@@ -143,7 +140,7 @@ background-color: black;
   border-radius: 5px;
 }
 .hvr-shutter-out-vertical:hover, .hvr-shutter-out-vertical:focus, .hvr-shutter-out-vertical:active {
-  color: white;
+  color: rgb(245, 246, 253);
 }
 .hvr-shutter-out-vertical:hover:before, .hvr-shutter-out-vertical:focus:before, .hvr-shutter-out-vertical:active:before {
   -webkit-transform: scaleY(1);

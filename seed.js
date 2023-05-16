@@ -11,23 +11,29 @@ const data = {
       id: 2,
       username: 'jon',
       password: 'fake',
-    }
-  ],
-  consoles: [
-    {
-      id: 1,
-      console: 'XboxOne',
-    },
-    {
-      id: 2,
-      console: 'PS4',
     },
     {
       id: 3,
+      username: 'ZakBay',
+      password: 'fake',
+    }
+
+  ],
+  consoles: [
+    {
+      id: 0,
+      console: 'XboxOne',
+    },
+    {
+      id: 1,
+      console: 'PS4',
+    },
+    {
+      id: 2,
       console: 'PC',
     },
     {
-      id: 4,
+      id: 3,
       console: 'Nintendo Switch',
     },
   ],
@@ -53,7 +59,7 @@ const data = {
     },
     {
       gameTitle: "Saints Row 3",
-      consoleId: '4',
+      consoleId: '3',
       codeTitle: "More Money",
       code: "down-up-right-right-R1-R2",
       userId: 1,
@@ -61,7 +67,7 @@ const data = {
     },
     {
       gameTitle: "Saints Row 3",
-      consoleId: '4',
+      consoleId: '3',
       codeTitle: "More Money",
       code: "down-up-right-right-R1-R2",
       userId: 2,
@@ -69,7 +75,7 @@ const data = {
     },
     {
       gameTitle: "Stardew Valley",
-      consoleId: '3',
+      consoleId: '2',
       codeTitle: "More Money",
       code: "down-up-right-right-R1-R2",
       userId: 1,
@@ -77,7 +83,7 @@ const data = {
     },
     {
       gameTitle: "Pokemon",
-      consoleId: '4',
+      consoleId: '3',
       codeTitle: "Skip Intro",
       code: "B05557898BBD",
       userId: 1,
@@ -85,7 +91,7 @@ const data = {
     },
     {
       gameTitle: "Pokemon",
-      consoleId: '4',
+      consoleId: '3',
       codeTitle: "Skip Intro",
       code: "B05557898BBD",
       userId: 2,
@@ -121,7 +127,31 @@ const data = {
       codeTitle: "All Weapons",
       code: "Enter Y, RT, Left, LB, A, Right, Y, Down, X, LB(3)",
       userId: 1,
-      id: 10
+      id: 11
+    },
+    {
+      gameTitle: "Sims 4",
+      consoleId: '3',
+      codeTitle: "50,000 Simoleons",
+      code: "MotherLoad",
+      userId: 1,
+      id: 12
+    },
+    {
+      gameTitle: "Sims 4",
+      consoleId: '3',
+      codeTitle: "50,000 Simoleons",
+      code: "MotherLoad",
+      userId: 2,
+      id: 13
+    },
+    {
+      gameTitle: "Sims 4",
+      consoleId: '3',
+      codeTitle: "50,000 Simoleons",
+      code: "MotherLoad",
+      userId: 3,
+      id: 14
     }
   ],
 };

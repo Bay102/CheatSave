@@ -1,6 +1,6 @@
 export type AuthContextType = {
   user: User | null;
-  setUser:  React.Dispatch<React.SetStateAction<null>>
+  setUser: React.Dispatch<React.SetStateAction<null>>;
   register: (input: RegisterParams) => void | Promise<void>;
   logOut: () => void;
   logIn: ({
@@ -10,6 +10,34 @@ export type AuthContextType = {
     username: string;
     password: string;
   }) => Promise<void>;
+};
+
+export type AppContextType = {
+  display: string;
+  setDisplay: React.Dispatch<React.SetStateAction<string>>;
+  showNav: boolean;
+  setShowNav: React.Dispatch<React.SetStateAction<boolean>>;
+  showNewGame: boolean;
+  setShowNewGame: React.Dispatch<React.SetStateAction<boolean>>;
+  consoles: string[];
+};
+
+export type UsersCodeContextType = {
+  usersCodes: CheatCode[] | [];
+  setUsersCodes: React.Dispatch<React.SetStateAction<[]>>;
+  handleDelete: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
+  userSearch: string;
+  setUserSearch: React.Dispatch<React.SetStateAction<string>>;
+  consoleFilter: string;
+  setConsoleFilter: React.Dispatch<React.SetStateAction<string>>;
+  fetchCodes: () => void;
+};
+
+export type NavBarTypes = {
+  login: JSX.Element;
+  signUp: JSX.Element;
 };
 
 export type RegisterParams = {
@@ -23,10 +51,10 @@ export type User = {
   id: number;
 };
 
-export type NewGameFormProps = {
-  setShowNewGame: React.Dispatch<React.SetStateAction<boolean>>;
-  showNewGame: any;
-};
+// export type NewGameFormProps = {
+//   setShowNewGame: React.Dispatch<React.SetStateAction<boolean>>;
+//   showNewGame: any;
+// };
 
 export type CheatCode = {
   gameTitle: string;
@@ -38,6 +66,6 @@ export type CheatCode = {
 };
 
 export type Console = {
-  id: number,
-  console: string
-}
+  id: number;
+  console: string;
+};

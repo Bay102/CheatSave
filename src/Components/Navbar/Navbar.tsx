@@ -1,34 +1,23 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useAuthProvider } from '../../Providers/Auth.Provider.context';
 import { LogoutButton } from '../LogoutButton';
 import { Login } from '../UserComponents/Login/Login';
 import { SignUp } from '../UserComponents/SignUP/SignUp';
 import styles from './Navbar.module.css';
-import React, { useState } from 'react';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 import { useAppProvider } from '../../Providers/App.Provider.context';
+import { NavBarTypes } from '../../Types';
 
-export const Navbar : React.FC = () => {
+export const Navbar: React.FC = () => {
+  const { display, setDisplay } = useAppProvider();
 
-  const { user }: any = useAuthProvider();
-  const { display, setDisplay , showNav}: any = useAppProvider();
-
-
-  const navbarOptions: any = {
+  const navbarOptions: NavBarTypes = {
     login: <Login />,
     signUp: <SignUp />,
   };
 
   return (
     <>
-      <div
-        className={styles.nav_container}
-      >
+      <div className={styles.nav_container}>
         <ul className={styles.nav_container}>
-{/* 
-`${styles.nav_list} ${
-          showNav ? styles.nav_container_hidden :null
-        }` */}
           <li>
             <button onClick={() => setDisplay('login')}>Login</button>
           </li>
@@ -39,10 +28,7 @@ export const Navbar : React.FC = () => {
             <LogoutButton />
           </li>
         </ul>
-
-
-        </div>
-
+      </div>
       <div className="register_container">{navbarOptions[display]}</div>
     </>
   );

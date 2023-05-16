@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { getConsoles } from '../Api/get-consoles';
+import { AppContextType } from '../Types';
 
-const AppContext = createContext({});
+const AppContext = createContext({} as AppContextType);
 
 export const AppProvider = ({ children }: { children: JSX.Element }) => {
   const [display, setDisplay] = useState<string>('');
@@ -22,7 +23,7 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
         setShowNav,
         showNewGame,
         setShowNewGame,
-        consoles
+        consoles,
       }}
     >
       {children}

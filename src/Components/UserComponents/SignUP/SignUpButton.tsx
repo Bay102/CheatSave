@@ -3,7 +3,7 @@ import { useAuthProvider } from '../../../Providers/Auth.Provider.context';
 
 export const SignUpButton = () => {
    
-  const { register }: any = useAuthProvider();
+  const { register } = useAuthProvider();
 
-  return <button onClick={() => register()}>Create Account</button>;
+  return <button onClick={() => register}>Create Account</button>;
 };

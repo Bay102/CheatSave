@@ -1,11 +1,8 @@
-import React from "react"
-import { useAuthProvider } from "../Providers/Auth.Provider.context"
+import React from 'react';
+import { useAuthProvider } from '../Providers/Auth.Provider.context';
 
 export const LogoutButton = () => {
+  const { logOut } = useAuthProvider();
 
-   const {logOut} : any = useAuthProvider() 
-  
-   return (
-      <button onClick={() => logOut()}>LogOut</button>
-   )
-}  
+  return <button onClick={() => logOut()}>LogOut</button>;
+};

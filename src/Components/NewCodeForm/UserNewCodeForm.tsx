@@ -12,13 +12,15 @@ export const UserNewCodeForm: React.FC = () => {
   const [codeTitle, setCodeTitle] = useState('');
   const [code, setCode] = useState('');
 
-  const { setShowNewGame, consoles }: any = useAppProvider();
-  const { user }: any = useAuthProvider();
-  const { fetchCodes, consoleOptions }: any = useUserCodesProvider();
+  const { setShowNewGame, consoles } = useAppProvider();
+  const { user } = useAuthProvider();
+  const { fetchCodes } = useUserCodesProvider();
 
   const handleCodeSubmit = () => {
     if (gameTitle && codeTitle && console && code) {
-      addGame(gameTitle, console, codeTitle, code, user.id).then(() => fetchCodes());
+      addGame(gameTitle, console, codeTitle, code, user.id).then(() =>
+        fetchCodes()
+      );
       setGameTitle('');
       setConsole(undefined);
       setCodeTitle('');

@@ -12,6 +12,7 @@ body {
   overflow: hidden;
   background-image: url('https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGdhbWluZyUyMHdhbGxwYXBlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60');
   background-size: cover;
+  margin: auto;
 }
 
 .App {
@@ -19,7 +20,9 @@ body {
   display: flex;
   gap: 10px;
   font-family: monospace;
+  margin: auto;
 }
+
 
 select {
   height: 30px;
