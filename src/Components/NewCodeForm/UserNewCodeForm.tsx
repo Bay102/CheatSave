@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './UserNewCodeForm.module.css';
-import { addGame } from '../../Api/add-game';
+import { addGame } from '../../Api/add-code';
 import { useAuthProvider } from '../../Providers/Auth.Provider.context';
 import { toast } from 'react-toastify';
 import { useUserCodesProvider } from '../../Providers/UserCodes.Provider';
