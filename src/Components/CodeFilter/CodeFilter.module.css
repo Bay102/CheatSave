@@ -18,7 +18,7 @@
 
 .code_filter_container input {
    height: 30px;
-   /* border-radius: 20px; */
+   border-radius: 10px;
    width: 140px;
    padding: 10px;
 }

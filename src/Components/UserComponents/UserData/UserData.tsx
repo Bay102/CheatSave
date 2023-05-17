@@ -1,4 +1,4 @@
-import React, { HtmlHTMLAttributes, useEffect, useState } from 'react';
+import React, { Dispatch, HtmlHTMLAttributes, SetStateAction, useEffect, useState } from 'react';
 import styles from './UserData.module.css';
 import { useAppProvider } from '../../../Providers/App.Provider.context';
 import { UserNewCodeForm } from '../../NewCodeForm/UserNewCodeForm';
@@ -24,41 +24,40 @@ export const UserData: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowNewFeature(false);
-    }, 5000);
-
+    }, 4000);
     return () => {
       clearTimeout(timer);
     };
   }, []);
 
-  const setConsoleTitle = (consoleId: string) => {
+  const setConsoleTitle = (consoleId: number) => {
     switch (consoleId) {
-      case '0':
+      case 0:
         return 'Xbox One';
-      case '1':
+      case 1:
         return 'PS4';
-      case '2':
+      case 2:
         return 'PC';
-      case '3':
+      case 3:
         return 'Nintendo Switch';
       default:
         return 'Unknown Console';
     }
   };
 
-  const [dragIndex, setDragIndex] = useState('');
-  const [hoverIndex, setHoverIndex] = useState('');
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
+  const [hoverIndex, setHoverIndex] = useState<null | number>(null);
 
   const handleDragStart = (
     e: React.DragEvent<HTMLLIElement>,
-    index: React.SetStateAction<string> | number
+    index: number
   ) => {
     setDragIndex(index);
   };
 
   const handleDragOver = (
     e: React.DragEvent<HTMLLIElement>,
-    index: React.SetStateAction<string> | number
+    index: number
   ) => {
     e.preventDefault();
     setHoverIndex(index);
@@ -66,13 +65,17 @@ export const UserData: React.FC = () => {
 
   const handleDrop = (e: React.DragEvent<HTMLLIElement>, index: number) => {
     e.preventDefault();
+    if(dragIndex === null){
+      return
+    }
     const newItems = [...usersCodes];
     const draggedItem = newItems[dragIndex];
     newItems.splice(dragIndex, 1);
     newItems.splice(index, 0, draggedItem);
+
     setUsersCodes(newItems);
-    setDragIndex('');
-    setHoverIndex('');
+    setDragIndex(null);
+    setHoverIndex(null);
   };
 
   return (
@@ -103,7 +106,7 @@ export const UserData: React.FC = () => {
                   <div className={styles.name_console}>
                     <div className={styles.game_name}>{code.gameTitle}</div>
                     <div className={styles.game_console}>
-                      {setConsoleTitle(code.consoleId)}
+                      {setConsoleTitle(+code.consoleId)}
                     </div>
                   </div>
                   <div className={styles.game_codeTitle}>{code.codeTitle}:</div>

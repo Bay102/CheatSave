@@ -29,7 +29,7 @@ export const SignUp: React.FC = () => {
       setUserPassword('');
       setShowNav(false);
     } else {
-      toast.error('Required');
+      toast.error('Silly! You didnt type anyting!!');
     }
   };
 

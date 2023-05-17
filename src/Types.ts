@@ -23,8 +23,8 @@ export type AppContextType = {
 };
 
 export type UsersCodeContextType = {
-  usersCodes: CheatCode[] | null | undefined;
-  setUsersCodes: any;
+  usersCodes: CheatCode[];
+  setUsersCodes: React.Dispatch<React.SetStateAction<CheatCode[]>>
   handleDelete: (   
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;

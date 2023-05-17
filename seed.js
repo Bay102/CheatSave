@@ -14,7 +14,7 @@ const data = {
     },
     {
       id: 3,
-      username: 'ZakBay',
+      username: 'zakbay',
       password: 'fake',
     }
 
@@ -40,7 +40,7 @@ const data = {
   users_CheatCodes: [
     {
       gameTitle: "GTA 5",
-      consoleId: '1',
+      consoleId: '0',
       codeTitle: "Invincibility",
       code: "Enter Right, A, Right, Left, Right, RB, Right, Left, A, Y",
       userId: 1,
@@ -56,7 +56,7 @@ const data = {
     },
     {
       gameTitle: "Saints Row 3",
-      consoleId: '3',
+      consoleId: '0',
       codeTitle: "More Money",
       code: "down-up-right-right-R1-R2-A-A-Y",
       userId: 1,

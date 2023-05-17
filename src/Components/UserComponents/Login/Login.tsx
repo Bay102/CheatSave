@@ -11,7 +11,7 @@ export const Login: React.FC = () => {
   const { user, logIn, logOut } = useAuthProvider();
   const { setShowNav } = useAppProvider();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (user) {
       logOut();
@@ -21,12 +21,12 @@ export const Login: React.FC = () => {
         toast.error(e.message);
       });
       setShowNav(false);
-    } else toast.error('Required');
+    } else toast.error('Silly! You didnt type anything!');
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} action="">
+      <form onSubmit={handleLogin} action="">
         <div className={styles.login_container}>
           <div className={styles.login_inputs}>
             <h2>Sign In</h2>

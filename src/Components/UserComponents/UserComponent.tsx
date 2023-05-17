@@ -12,15 +12,20 @@ export const UserComponent: React.FC = () => {
   const { showNav, setShowNav } = useAppProvider();
   const { user } = useAuthProvider();
 
+  const setNavDisplay = () => {
+    showNav ? setShowNav(false) : setShowNav(true);
+  };
 
   return (
     <div className={styles.user_components_container}>
       <div className={styles.user_icon}>
-        <div className="user_name">{user ? user.username : 'SignIn'}</div>
+        <div onClick={() => setNavDisplay()} className="user_name">
+          {user ? user.username : 'SignIn'}
+        </div>
         <FontAwesomeIcon
           className={styles.userIcon}
+          onClick={() => setNavDisplay()}
           style={{ cursor: 'pointer' }}
-          onClick={() => (showNav ? setShowNav(false) : setShowNav(true))}
           icon={faCircleUser}
         />
       </div>
