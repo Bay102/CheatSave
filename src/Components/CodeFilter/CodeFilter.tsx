@@ -3,7 +3,6 @@ import styles from './CodeFilter.module.css';
 import { useAppProvider } from '../../Providers/App.Provider.context';
 import { useUserCodesProvider } from '../../Providers/UserCodes.Provider';
 
-
 export const CodeFilter: React.FC = () => {
   const { userSearch, setUserSearch, consoleFilter, setConsoleFilter } =
     useUserCodesProvider();

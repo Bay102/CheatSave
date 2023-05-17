@@ -8,7 +8,9 @@ export const getUserFromServer = ({ username }: { username: string }) =>
       }
       return response.json();
     })
-    .then((users) => users.find((user: User) => user.username === username))
+    .then((users) =>
+      users.find((user: User) => user.username === username.toLowerCase())
+    )
     .then((user) => {
       if (!user) {
         throw new Error('no user found');

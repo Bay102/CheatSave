@@ -2,33 +2,34 @@ import React, { useState } from 'react';
 import styles from './Login.module.css';
 import { useAuthProvider } from '../../../Providers/Auth.Provider.context';
 import { toast } from 'react-toastify';
-import { LogInButton } from './LoginButton';
 import { useAppProvider } from '../../../Providers/App.Provider.context';
 
 export const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
 
-  const { logIn } = useAuthProvider();
+  const { user, logIn, logOut } = useAuthProvider();
   const { setShowNav } = useAppProvider();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (user) {
+      logOut();
+    }
+    if (username && userPassword) {
+      logIn({ username: username, password: userPassword }).catch((e) => {
+        toast.error(e.message);
+      });
+      setShowNav(false);
+    } else toast.error('Required');
+  };
 
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          logIn({ username: username, password: userPassword }).catch(
-            (e: any) => {
-              toast.error(e.message);
-            }
-          );
-          setShowNav(false);
-        }}
-        className={''}
-        action=""
-      >
+      <form onSubmit={handleSubmit} action="">
         <div className={styles.login_container}>
           <div className={styles.login_inputs}>
+            <h2>Sign In</h2>
             <input
               onChange={(e) => setUsername(e.target.value)}
               value={username}
@@ -41,8 +42,7 @@ export const Login: React.FC = () => {
               placeholder="Password"
               type="password"
             />
-            <LogInButton />
-            {/* <button type="submit">Sign In</button> */}
+            <button type="submit">Sign In</button>
           </div>
         </div>
       </form>

@@ -8,14 +8,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { CheatCode } from '../../../Types';
 import classNames from 'classnames';
+import { NewFeature } from '../../NewFeature/NewFeature';
 
 export const UserData: React.FC = () => {
+  const [showNewFeature, setShowNewFeature] = useState(true);
+
   const { showNewGame } = useAppProvider();
   const { fetchCodes, usersCodes, handleDelete, setUsersCodes } =
     useUserCodesProvider();
 
   useEffect(() => {
     fetchCodes();
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowNewFeature(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   const setConsoleTitle = (consoleId: string) => {
@@ -31,20 +44,22 @@ export const UserData: React.FC = () => {
       default:
         return 'Unknown Console';
     }
-    
   };
 
-  const [dragIndex, setDragIndex ] : any = useState(null);
-  const [hoverIndex, setHoverIndex] : any = useState(null);
+  const [dragIndex, setDragIndex] = useState('');
+  const [hoverIndex, setHoverIndex] = useState('');
 
   const handleDragStart = (
     e: React.DragEvent<HTMLLIElement>,
-    index: number
+    index: React.SetStateAction<string> | number
   ) => {
     setDragIndex(index);
   };
 
-  const handleDragOver = (e: React.DragEvent<HTMLLIElement>, index: number) => {
+  const handleDragOver = (
+    e: React.DragEvent<HTMLLIElement>,
+    index: React.SetStateAction<string> | number
+  ) => {
     e.preventDefault();
     setHoverIndex(index);
   };
@@ -56,8 +71,8 @@ export const UserData: React.FC = () => {
     newItems.splice(dragIndex, 1);
     newItems.splice(index, 0, draggedItem);
     setUsersCodes(newItems);
-    setDragIndex(null);
-    setHoverIndex(null);
+    setDragIndex('');
+    setHoverIndex('');
   };
 
   return (
@@ -67,6 +82,7 @@ export const UserData: React.FC = () => {
           <h2>My Cheat Codes</h2>
         </div>
         <div className={styles.games_container}>
+          {showNewFeature && <NewFeature />}
           {showNewGame && <UserNewCodeForm />}
           {<CodeFilter />}
           <ul>
@@ -83,11 +99,6 @@ export const UserData: React.FC = () => {
                   onDragStart={(e) => handleDragStart(e, gameIndex)}
                   onDragOver={(e) => handleDragOver(e, gameIndex)}
                   onDrop={(e) => handleDrop(e, gameIndex)}
-                  // style={{
-                  //   opacity: dragIndex === gameIndex ? 0.5 : 1,
-                  //   backgroundColor:
-                  //     hoverIndex === gameIndex ? 'lightgray' : 'black',
-                  // }}
                 >
                   <div className={styles.name_console}>
                     <div className={styles.game_name}>{code.gameTitle}</div>
@@ -96,7 +107,9 @@ export const UserData: React.FC = () => {
                     </div>
                   </div>
                   <div className={styles.game_codeTitle}>{code.codeTitle}:</div>
-                  <div className={styles.game_code}>{code.code}</div>
+                  <div className={styles.game_code}>
+                    {code.code.toUpperCase()}
+                  </div>
                   <button
                     data-id={code.id}
                     onClick={(event) => handleDelete(event)}

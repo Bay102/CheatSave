@@ -9,6 +9,7 @@ export const SignUp: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
 
+  const { user, logOut } = useAuthProvider();
   const { setShowNav } = useAppProvider();
   const { register } = useAuthProvider();
 
@@ -17,27 +18,27 @@ export const SignUp: React.FC = () => {
     password: userPassword,
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (user) {
+      logOut();
+    }
+    if (username && userPassword) {
+      register(userCredentials);
+      setUsername('');
+      setUserPassword('');
+      setShowNav(false);
+    } else {
+      toast.error('Required');
+    }
+  };
+
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setUsername('');
-          setUserPassword('');
-          setShowNav(false);
-          register(userCredentials)
-            // .then(() => {
-            //   toast.success('Registration successful!');
-            // })
-            // .catch((error: any) => {
-            //   toast.error(error.message);
-            // });
-        }}
-        className={styles.user_form}
-        action=""
-      >
+      <form onSubmit={handleSubmit} className={styles.user_form} action="">
         <div className={styles.user_form_container}>
           <div className={styles.user_form_inputs}>
+            <h2>Create Account</h2>
             <input
               onChange={(e) => setUsername(e.target.value)}
               value={username}

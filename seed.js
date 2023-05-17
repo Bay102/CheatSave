@@ -37,9 +37,6 @@ const data = {
       console: 'Nintendo Switch',
     },
   ],
-  games: [
-
-  ],
   users_CheatCodes: [
     {
       gameTitle: "GTA 5",
@@ -61,7 +58,7 @@ const data = {
       gameTitle: "Saints Row 3",
       consoleId: '3',
       codeTitle: "More Money",
-      code: "down-up-right-right-R1-R2",
+      code: "down-up-right-right-R1-R2-A-A-Y",
       userId: 1,
       id: 3
     },
@@ -69,7 +66,7 @@ const data = {
       gameTitle: "Saints Row 3",
       consoleId: '3',
       codeTitle: "More Money",
-      code: "down-up-right-right-R1-R2",
+      code: "down-up-right-right-R1-R2-A-A-Y",
       userId: 2,
       id: 4
     },

@@ -1,9 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { registerFetch } from '../Api/User/register';
-import { AuthContextType, RegisterParams, User } from '../Types';
+import { AuthContextType, RegisterParams } from '../Types';
 import { toast } from 'react-toastify';
 import { getUserFromServer } from '../Api/User/get-user';
-import { API_CONFIG } from '../Api/config';
 import { checkIfUserExists } from '../Api/check-if-username-isTaken';
 
 const AuthContext = createContext({} as AuthContextType);
@@ -32,18 +31,12 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     }
   }, []);
 
-  const logIn = async ({
-    username,
-    password,
-  }: {
-    username: string;
-    password: string;
-  }) => {
+  const logIn = async ({ username, password }: { username: string, password: string }) => {
     const user = await getUserFromServer({ username });
     if (user.password !== password) {
       throw new Error('invalid password');
     } else {
-      toast.success('login success');
+      toast.success(`Welcome ${username.toUpperCase()}`);
       setUser(user);
       localStorage.setItem('user', JSON.stringify(user));
     }
