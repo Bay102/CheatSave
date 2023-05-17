@@ -1,5 +1,3 @@
-import React from 'react';
-import { API_CONFIG } from '../config';
 import { User } from '../../Types';
 
 export const getUserFromServer = ({ username }: { username: string }) =>

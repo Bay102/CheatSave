@@ -19,7 +19,6 @@ export const UserData: React.FC = () => {
   }, []);
 
   const setConsoleTitle = (consoleId: string) => {
-    console.log(consoleId);
     switch (consoleId) {
       case '0':
         return 'Xbox One';

@@ -9,10 +9,8 @@ export const getUsersCodes = (userId: number) =>
 
     .then((codes) => codes.filter((code: any) => code.userId === userId))
     .then((codes) => {
-      console.log(codes);
       if (!codes) {
         throw new Error('Error Finding Codes');
       }
-
       return codes;
     });

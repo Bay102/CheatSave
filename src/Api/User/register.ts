@@ -13,11 +13,9 @@ return fetch(API_CONFIG.baseUrl + '/Users', {
     },
     body: JSON.stringify({ username, password }),
   }).then((response) => {
-    console.log(response);
-    
     if (!response.ok) {
       throw new Error('registration failed');
-    }
+    }    
     return response.json();
   });
 };

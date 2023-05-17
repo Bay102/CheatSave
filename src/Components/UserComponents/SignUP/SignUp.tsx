@@ -26,12 +26,12 @@ export const SignUp: React.FC = () => {
           setUserPassword('');
           setShowNav(false);
           register(userCredentials)
-            .then(() => {
-              toast.success('Registration successful!');
-            })
-            .catch((error: any) => {
-              toast.error(error.message);
-            });
+            // .then(() => {
+            //   toast.success('Registration successful!');
+            // })
+            // .catch((error: any) => {
+            //   toast.error(error.message);
+            // });
         }}
         className={styles.user_form}
         action=""

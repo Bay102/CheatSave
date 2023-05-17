@@ -1,21 +1,25 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-
 import { registerFetch } from '../Api/User/register';
 import { AuthContextType, RegisterParams, User } from '../Types';
 import { toast } from 'react-toastify';
 import { getUserFromServer } from '../Api/User/get-user';
+import { API_CONFIG } from '../Api/config';
+import { checkIfUserExists } from '../Api/check-if-username-isTaken';
 
 const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState(null);
 
-  const register = ({ username, password }: RegisterParams) => {
+  const register = async ({ username, password }: RegisterParams) => {
+    const UserExists = await checkIfUserExists(username);
     if (username && password) {
-      return registerFetch({ username, password }).then((user) => {
-        localStorage.setItem('user', JSON.stringify(user));
-        setUser(user);
-      });
+      if (!UserExists) {
+        return registerFetch({ username, password }).then((user) => {
+          localStorage.setItem('user', JSON.stringify(user));
+          setUser(user);
+        });
+      }
     } else {
       toast.info('Fields are empty');
     }
