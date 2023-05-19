@@ -2,7 +2,7 @@ import { API_CONFIG } from './config';
 
 export const addGame = (
   gameTitle: string,
-  console: any,
+  console: string,
   codeTitle: string,
   code: string,
   userId: number

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuthProvider } from '../Providers/Auth.Provider.context';
+import { useAuthProvider } from '../Providers/AuthProvider';
 
 export const LogoutButton = () => {
   const { logOut } = useAuthProvider();

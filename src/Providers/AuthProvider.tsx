@@ -31,7 +31,13 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     }
   }, []);
 
-  const logIn = async ({ username, password }: { username: string, password: string }) => {
+  const logIn = async ({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }) => {
     const user = await getUserFromServer({ username });
     if (user.password !== password) {
       throw new Error('invalid password');

@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './UserComponent.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { Navbar } from '../Navbar/Navbar';
-import { useAppProvider } from '../../Providers/App.Provider.context';
-import { useAuthProvider } from '../../Providers/Auth.Provider.context';
+import { useAppProvider } from '../../Providers/AppProvider';
+import { useAuthProvider } from '../../Providers/AuthProvider';
 import { UserData } from './UserData/UserData';
-import { NewFeature } from '../NewFeature/NewFeature';
 
 export const UserComponent: React.FC = () => {
   const { showNav, setShowNav } = useAppProvider();

@@ -1,8 +1,8 @@
-import React, { Dispatch, HtmlHTMLAttributes, SetStateAction, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './UserData.module.css';
-import { useAppProvider } from '../../../Providers/App.Provider.context';
+import { useAppProvider } from '../../../Providers/AppProvider';
 import { UserNewCodeForm } from '../../NewCodeForm/UserNewCodeForm';
-import { useUserCodesProvider } from '../../../Providers/UserCodes.Provider';
+import { useUserCodesProvider } from '../../../Providers/UserCodesProvider';
 import { CodeFilter } from '../../CodeFilter/CodeFilter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,6 @@ import { NewFeature } from '../../NewFeature/NewFeature';
 
 export const UserData: React.FC = () => {
   const [showNewFeature, setShowNewFeature] = useState(true);
-
   const { showNewGame } = useAppProvider();
   const { fetchCodes, usersCodes, handleDelete, setUsersCodes } =
     useUserCodesProvider();
@@ -55,18 +54,15 @@ export const UserData: React.FC = () => {
     setDragIndex(index);
   };
 
-  const handleDragOver = (
-    e: React.DragEvent<HTMLLIElement>,
-    index: number
-  ) => {
+  const handleDragOver = (e: React.DragEvent<HTMLLIElement>, index: number) => {
     e.preventDefault();
     setHoverIndex(index);
   };
 
   const handleDrop = (e: React.DragEvent<HTMLLIElement>, index: number) => {
     e.preventDefault();
-    if(dragIndex === null){
-      return
+    if (dragIndex === null) {
+      return;
     }
     const newItems = [...usersCodes];
     const draggedItem = newItems[dragIndex];

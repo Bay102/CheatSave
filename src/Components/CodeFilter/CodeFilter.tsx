@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './CodeFilter.module.css';
-import { useAppProvider } from '../../Providers/App.Provider.context';
-import { useUserCodesProvider } from '../../Providers/UserCodes.Provider';
+import { useAppProvider } from '../../Providers/AppProvider';
+import { useUserCodesProvider } from '../../Providers/UserCodesProvider';
+import { ConsoleType } from '../../Types';
 
 export const CodeFilter: React.FC = () => {
   const { userSearch, setUserSearch, consoleFilter, setConsoleFilter } =
@@ -32,9 +33,9 @@ export const CodeFilter: React.FC = () => {
           onChange={(e) => setConsoleFilter(e.target.value)}
         >
           <option value={''}>Select..</option>
-          {consoles.map((console: any, index: number) => (
+          {consoles.map((consoleItem: ConsoleType, index: number) => (
             <option value={index} key={index}>
-              {console.console}
+              {consoleItem.console}
             </option>
           ))}
         </select>

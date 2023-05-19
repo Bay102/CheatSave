@@ -1,14 +1,14 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { JSXElementConstructor, createContext, useContext, useEffect, useState } from 'react';
 import { getConsoles } from '../Api/get-consoles';
-import { AppContextType } from '../Types';
+import { AppContextType, ConsoleType } from '../Types';
 
 const AppContext = createContext({} as AppContextType);
 
 export const AppProvider = ({ children }: { children: JSX.Element }) => {
-  const [display, setDisplay] = useState<string>('');
+  const [display, setDisplay] = useState('');
   const [showNav, setShowNav] = useState<boolean>(true);
   const [showNewGame, setShowNewGame] = useState(false);
-  const [consoles, setConsoles] = useState<string[]>([]);
+  const [consoles, setConsoles] = useState([]);
 
   useEffect(() => {
     getConsoles().then((consoles) => setConsoles(consoles));

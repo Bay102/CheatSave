@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { useAuthProvider } from './Auth.Provider.context';
+import { useAuthProvider } from './AuthProvider';
 import { getUsersCodes } from '../Api/User/get-users-codes';
 import { deleteCheat } from '../Api/User/delete-cheat';
 import { CheatCode, UsersCodeContextType } from '../Types';
@@ -8,11 +8,12 @@ const UserCodesContext = createContext({} as UsersCodeContextType);
 
 export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
   const { user } = useAuthProvider();
-  const [usersCodes, setUsersCodes] = useState([]);
+  const [usersCodes, setUsersCodes] = useState<CheatCode[]>([]);
   const [userSearch, setUserSearch] = useState('');
   const [consoleFilter, setConsoleFilter] = useState('');
 
   const fetchCodes = () => {
+    if (user) 
     getUsersCodes(user.id).then((codes) => setUsersCodes(codes));
   };
 
@@ -23,22 +24,20 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
     deleteCheat(id).then(() => fetchCodes());
   };
 
-  const filterCodes = (
-    codes: CheatCode[],
-    searchTerm: string,
-    consoleID: string
-  ) => {
+  const filterCodes = ( codes: CheatCode[], searchTerm: string, consoleID: string ) => {
     if (searchTerm && consoleID) {
       return codes.filter(
         (code: CheatCode) =>
           code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase()) &&
           code.consoleId === consoleID
       );
-    } else if (searchTerm) {
+    }
+    if (searchTerm) {
       return codes.filter((code: CheatCode) =>
         code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase())
       );
-    } else if (consoleID) {
+    }
+    if (consoleID) {
       return codes.filter((code: CheatCode) => code.consoleId === consoleID);
     }
     return codes;

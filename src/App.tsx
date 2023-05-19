@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import { UserComponent } from './Components/UserComponents/UserComponent';
-import { AuthProvider } from './Providers/Auth.Provider.context';
+import { AuthProvider } from './Providers/AuthProvider';
 import { ToastContainer } from 'react-toastify';
-import { AppProvider } from './Providers/App.Provider.context';
-import { UserCodesProvider } from './Providers/UserCodes.Provider';
-import { CheatCC } from './Components/CheatCC_IFrame/CheatCC';
+import { AppProvider } from './Providers/AppProvider';
+import { UserCodesProvider } from './Providers/UserCodesProvider';
+
 
 function App() {
   return (

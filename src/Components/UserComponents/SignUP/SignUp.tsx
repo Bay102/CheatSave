@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styles from './SignUp.module.css';
-import { useAuthProvider } from '../../../Providers/Auth.Provider.context';
+import { useAuthProvider } from '../../../Providers/AuthProvider';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useAppProvider } from '../../../Providers/App.Provider.context';
+import { useAppProvider } from '../../../Providers/AppProvider';
 
 export const SignUp: React.FC = () => {
   const [username, setUsername] = useState<string>('');

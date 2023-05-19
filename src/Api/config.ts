@@ -1,7 +1,7 @@
 type API_BASE = {
-   baseUrl: string
-}
+  baseUrl: string;
+};
 
 export const API_CONFIG: API_BASE = {
-   baseUrl: "http://localhost:3000"
-}
+  baseUrl: 'http://localhost:3000',
+};

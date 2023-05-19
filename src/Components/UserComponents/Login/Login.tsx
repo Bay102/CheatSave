@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
-import { useAuthProvider } from '../../../Providers/Auth.Provider.context';
+import { useAuthProvider } from '../../../Providers/AuthProvider';
 import { toast } from 'react-toastify';
-import { useAppProvider } from '../../../Providers/App.Provider.context';
+import { useAppProvider } from '../../../Providers/AppProvider';
 
 export const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');

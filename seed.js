@@ -42,7 +42,7 @@ const data = {
       gameTitle: "GTA 5",
       consoleId: '0',
       codeTitle: "Invincibility",
-      code: "Enter Right, A, Right, Left, Right, RB, Right, Left, A, Y",
+      code: "Right, A, Right, Left, Right, RB, Right, Left, A, Y",
       userId: 1,
       id: 1
     },

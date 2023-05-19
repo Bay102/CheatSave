@@ -19,12 +19,12 @@ export type AppContextType = {
   setShowNav: React.Dispatch<React.SetStateAction<boolean>>;
   showNewGame: boolean;
   setShowNewGame: React.Dispatch<React.SetStateAction<boolean>>;
-  consoles: string[];
+  consoles: ConsoleType[];
 };
 
 export type UsersCodeContextType = {
   usersCodes: CheatCode[];
-  setUsersCodes: React.Dispatch<React.SetStateAction<CheatCode[]>>
+  setUsersCodes: React.Dispatch<React.SetStateAction<CheatCode[]>>;
   handleDelete: (   
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
@@ -36,8 +36,8 @@ export type UsersCodeContextType = {
 };
 
 export type NavBarTypes = {
-  login: JSX.Element;
-  signUp: JSX.Element;
+  login: JSX.Element ;
+  signUp: JSX.Element ;
 };
 
 export type RegisterParams = {
@@ -51,6 +51,10 @@ export type User = {
   id: number;
 };
 
+export type Event = {
+  e: React.ChangeEvent<HTMLSelectElement> ;
+}
+
 export type CheatCode = {
   gameTitle: string;
   consoleId: string;
@@ -60,7 +64,8 @@ export type CheatCode = {
   id: number;
 };
 
-export type Console = {
+export type ConsoleType = {
   id: number;
   console: string;
 };
+

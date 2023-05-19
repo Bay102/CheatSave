@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import styles from './UserNewCodeForm.module.css';
 import { addGame } from '../../Api/add-code';
-import { useAuthProvider } from '../../Providers/Auth.Provider.context';
+import { useAuthProvider } from '../../Providers/AuthProvider';
 import { toast } from 'react-toastify';
-import { useUserCodesProvider } from '../../Providers/UserCodes.Provider';
-import { useAppProvider } from '../../Providers/App.Provider.context';
+import { useUserCodesProvider } from '../../Providers/UserCodesProvider';
+import { useAppProvider } from '../../Providers/AppProvider';
+import { ConsoleType } from '../../Types';
 
 export const UserNewCodeForm: React.FC = () => {
   const [gameTitle, setGameTitle] = useState('');
-  const [console, setConsole] = useState(undefined);
+  const [console, setConsole] = useState<string>('');
   const [codeTitle, setCodeTitle] = useState('');
   const [code, setCode] = useState('');
 
@@ -17,16 +18,17 @@ export const UserNewCodeForm: React.FC = () => {
   const { fetchCodes } = useUserCodesProvider();
 
   const handleCodeSubmit = () => {
-    if (gameTitle && codeTitle && console && code) {
-      addGame(gameTitle, console, codeTitle, code, user.id).then(() =>
-        fetchCodes()
-      );
-      setGameTitle('');
-      setConsole(undefined);
-      setCodeTitle('');
-      setCode('');
-      setShowNewGame(false);
-    } else toast('All fields are required');
+    if (user)
+      if (gameTitle && codeTitle && console && code) {
+        addGame(gameTitle, console, codeTitle, code, user.id).then(() =>
+          fetchCodes()
+        );
+        setGameTitle('');
+        setConsole('');
+        setCodeTitle('');
+        setCode('');
+        setShowNewGame(false);
+      } else toast('All fields are required');
   };
 
   return (
@@ -48,13 +50,13 @@ export const UserNewCodeForm: React.FC = () => {
         <label htmlFor="console">
           Console:
           <select
-            onChange={(e: any) => setConsole(e.target.value)}
+            onChange={(e) => setConsole(e.target.value)}
             value={console}
             name=""
             id=""
           >
             <option>Select...</option>
-            {consoles.map((console: any, index: number) => (
+            {consoles.map((console: ConsoleType, index) => (
               <option value={index} key={index}>
                 {console.console}
               </option>
