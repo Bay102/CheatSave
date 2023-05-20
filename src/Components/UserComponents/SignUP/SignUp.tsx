@@ -6,8 +6,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAppProvider } from '../../../Providers/AppProvider';
 
 export const SignUp: React.FC = () => {
+
   const [username, setUsername] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
+  const [confirmPassword, setConfirmUserPassword] = useState<string>('');
+  
 
   const { user, logOut } = useAuthProvider();
   const { setShowNav } = useAppProvider();
@@ -18,12 +21,20 @@ export const SignUp: React.FC = () => {
     password: userPassword,
   };
 
+  const matchPasswords = () => {
+    if (userPassword !== confirmPassword) {
+      toast.error('Passwords do not match')
+      return false
+    }
+    else return true
+  }
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (user) {
       logOut();
     }
-    if (username && userPassword) {
+    if (username && userPassword && matchPasswords()) {
       register(userCredentials);
       setUsername('');
       setUserPassword('');
@@ -44,12 +55,21 @@ export const SignUp: React.FC = () => {
               value={username}
               placeholder="Username"
               type="text"
+              minLength={6}
             />
             <input
               onChange={(e) => setUserPassword(e.target.value)}
               value={userPassword}
               placeholder="Password"
               type="password"
+              minLength={6}
+            />
+            <input
+              onChange={(e) => setConfirmUserPassword(e.target.value)}
+              value={confirmPassword}
+              placeholder="Confirm Password"
+              type="password"
+              minLength={6}
             />
             <button type="submit">Register</button>
           </div>

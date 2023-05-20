@@ -41,6 +41,7 @@ export const Login: React.FC = () => {
               value={userPassword}
               placeholder="Password"
               type="password"
+              maxLength={6}
             />
             <button type="submit">Sign In</button>
           </div>

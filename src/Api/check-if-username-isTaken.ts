@@ -12,7 +12,6 @@ export const checkIfUserExists = async (username: string) => {
     const user = users.find(
       (user: User) => user.username === username.toLowerCase()
     );
-
     if (user) {
       toast.error('Username is Taken');
       return true;

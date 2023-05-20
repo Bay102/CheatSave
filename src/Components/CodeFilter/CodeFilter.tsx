@@ -33,7 +33,7 @@ export const CodeFilter: React.FC = () => {
           onChange={(e) => setConsoleFilter(e.target.value)}
         >
           <option value={''}>Select..</option>
-          {consoles.map((consoleItem: ConsoleType, index: number) => (
+          {consoles.map((consoleItem: ConsoleType, index) => (
             <option value={index} key={index}>
               {consoleItem.console}
             </option>

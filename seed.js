@@ -5,19 +5,18 @@ const data = {
     {
       id: 1,
       username: 'doomslayer',
-      password: 'dog',
+      password: 'doomslayer',
     },
     {
       id: 2,
       username: 'jon',
-      password: 'fake',
+      password: 'tester',
     },
     {
       id: 3,
       username: 'zakbay',
-      password: 'fake',
+      password: 'tester',
     }
-
   ],
   consoles: [
     {

@@ -17,7 +17,7 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
     getUsersCodes(user.id).then((codes) => setUsersCodes(codes));
   };
 
-  const handleDelete = (
+  const handleDelete = ( 
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     const id = event.currentTarget.dataset.id;
