@@ -40,9 +40,7 @@ export const SignUp: React.FC = () => {
       setUserPassword('');
       setShowNav(false);
       setDisplay('')
-    } else {
-      toast.error('Silly! You didnt type anyting!!');
-    }
+    } 
   };
 
   return (
