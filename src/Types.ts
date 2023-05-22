@@ -45,6 +45,11 @@ export type RegisterParams = {
   password: string;
 };
 
+export type LoginParams = {
+  username: string;
+  password: string;
+}
+
 export type User = {
   username: string;
   password: string;
@@ -68,3 +73,9 @@ export type ConsoleType = {
   id: number;
   console: string;
 };
+
+export type FilterParams = {
+  codes: CheatCode[], 
+  searchTerm: string, 
+  consoleID: string
+}

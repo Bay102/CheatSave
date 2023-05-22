@@ -9,7 +9,7 @@ export const Login: React.FC = () => {
   const [userPassword, setUserPassword] = useState<string>('');
 
   const { user, logIn, logOut } = useAuthProvider();
-  const { setShowNav } = useAppProvider();
+  const { setShowNav, setDisplay } = useAppProvider();
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,6 +21,7 @@ export const Login: React.FC = () => {
         toast.error(e.message);
       });
       setShowNav(false);
+      setDisplay('')
     } else toast.error('Silly! You didnt type anything!');
   };
 
@@ -41,7 +42,7 @@ export const Login: React.FC = () => {
               value={userPassword}
               placeholder="Password"
               type="password"
-              maxLength={6}
+              // maxLength={6}
             />
             <button type="submit">Sign In</button>
           </div>

@@ -13,7 +13,7 @@ export const SignUp: React.FC = () => {
   
 
   const { user, logOut } = useAuthProvider();
-  const { setShowNav } = useAppProvider();
+  const { setShowNav, setDisplay } = useAppProvider();
   const { register } = useAuthProvider();
 
   const userCredentials = {
@@ -39,6 +39,7 @@ export const SignUp: React.FC = () => {
       setUsername('');
       setUserPassword('');
       setShowNav(false);
+      setDisplay('')
     } else {
       toast.error('Silly! You didnt type anyting!!');
     }
@@ -56,6 +57,9 @@ export const SignUp: React.FC = () => {
               placeholder="Username"
               type="text"
               minLength={6}
+              pattern="^\S+$" 
+              title="Spaces are not allowed." 
+              required
             />
             <input
               onChange={(e) => setUserPassword(e.target.value)}
@@ -63,6 +67,9 @@ export const SignUp: React.FC = () => {
               placeholder="Password"
               type="password"
               minLength={6}
+              pattern="^\S+$" 
+              title="Spaces are not allowed." 
+              required
             />
             <input
               onChange={(e) => setConfirmUserPassword(e.target.value)}
@@ -70,6 +77,9 @@ export const SignUp: React.FC = () => {
               placeholder="Confirm Password"
               type="password"
               minLength={6}
+              pattern="^\S+$" 
+              title="Spaces are not allowed." 
+              required
             />
             <button type="submit">Register</button>
           </div>

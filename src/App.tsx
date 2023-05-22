@@ -5,6 +5,7 @@ import { AuthProvider } from './Providers/AuthProvider';
 import { ToastContainer } from 'react-toastify';
 import { AppProvider } from './Providers/AppProvider';
 import { UserCodesProvider } from './Providers/UserCodesProvider';
+import { CheatCC } from './Components/CheatCC_IFrame/CheatCC';
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         <UserCodesProvider>
           <div className="App">
             <ToastContainer position="top-center" autoClose={1000} />
-            {/* <CheatCC /> */}
+            <CheatCC />
             <UserComponent />
           </div>
         </UserCodesProvider>
