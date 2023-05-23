@@ -21,7 +21,7 @@ export const Login: React.FC = () => {
         toast.error(e.message);
       });
       setShowNav(false);
-      setDisplay('')
+      setDisplay('');
     } else toast.error('Silly! You didnt type anything!');
   };
 

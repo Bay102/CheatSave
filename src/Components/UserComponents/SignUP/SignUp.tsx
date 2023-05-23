@@ -6,11 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAppProvider } from '../../../Providers/AppProvider';
 
 export const SignUp: React.FC = () => {
-
   const [username, setUsername] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
   const [confirmPassword, setConfirmUserPassword] = useState<string>('');
-  
 
   const { user, logOut } = useAuthProvider();
   const { setShowNav, setDisplay } = useAppProvider();
@@ -23,11 +21,10 @@ export const SignUp: React.FC = () => {
 
   const matchPasswords = () => {
     if (userPassword !== confirmPassword) {
-      toast.error('Passwords do not match')
-      return false
-    }
-    else return true
-  }
+      toast.error('Passwords do not match');
+      return false;
+    } else return true;
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,8 +36,8 @@ export const SignUp: React.FC = () => {
       setUsername('');
       setUserPassword('');
       setShowNav(false);
-      setDisplay('')
-    } 
+      setDisplay('');
+    }
   };
 
   return (
@@ -55,8 +52,8 @@ export const SignUp: React.FC = () => {
               placeholder="Username"
               type="text"
               minLength={6}
-              pattern="^\S+$" 
-              title="Spaces are not allowed." 
+              pattern="^\S+$"
+              title="Spaces are not allowed."
               required
             />
             <input
@@ -65,8 +62,8 @@ export const SignUp: React.FC = () => {
               placeholder="Password"
               type="password"
               minLength={6}
-              pattern="^\S+$" 
-              title="Spaces are not allowed." 
+              pattern="^\S+$"
+              title="Spaces are not allowed."
               required
             />
             <input
@@ -75,8 +72,8 @@ export const SignUp: React.FC = () => {
               placeholder="Confirm Password"
               type="password"
               minLength={6}
-              pattern="^\S+$" 
-              title="Spaces are not allowed." 
+              pattern="^\S+$"
+              title="Spaces are not allowed."
               required
             />
             <button type="submit">Register</button>

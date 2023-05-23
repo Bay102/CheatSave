@@ -6,7 +6,7 @@ type RegisterFetchParams = {
 };
 
 export const registerFetch = ({ username, password }: RegisterFetchParams) => {
-return fetch(API_CONFIG.baseUrl + '/Users', {
+  return fetch(API_CONFIG.baseUrl + '/Users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -15,8 +15,7 @@ return fetch(API_CONFIG.baseUrl + '/Users', {
   }).then((response) => {
     if (!response.ok) {
       throw new Error('registration failed');
-    }    
+    }
     return response.json();
   });
 };
-

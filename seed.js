@@ -16,7 +16,7 @@ const data = {
       id: 3,
       username: 'zakbay',
       password: 'tester',
-    }
+    },
   ],
   consoles: [
     {
@@ -38,117 +38,117 @@ const data = {
   ],
   users_CheatCodes: [
     {
-      gameTitle: "GTA 5",
+      gameTitle: 'GTA 5',
       consoleId: '0',
-      codeTitle: "Invincibility",
-      code: "Right, A, Right, Left, Right, RB, Right, Left, A, Y",
+      codeTitle: 'Invincibility',
+      code: 'Right, A, Right, Left, Right, RB, Right, Left, A, Y',
       userId: 1,
-      id: 1
+      id: 1,
     },
     {
-      gameTitle: "SpiderMan",
+      gameTitle: 'SpiderMan',
       consoleId: '2',
-      codeTitle: "Health",
-      code: "down-up-right-R1-R2",
+      codeTitle: 'Health',
+      code: 'down-up-right-R1-R2',
       userId: 1,
-      id: 2
+      id: 2,
     },
     {
-      gameTitle: "Saints Row 3",
+      gameTitle: 'Saints Row 3',
       consoleId: '0',
-      codeTitle: "More Money",
-      code: "down-up-right-right-R1-R2-A-A-Y",
+      codeTitle: 'More Money',
+      code: 'down-up-right-right-R1-R2-A-A-Y',
       userId: 1,
-      id: 3
+      id: 3,
     },
     {
-      gameTitle: "Saints Row 3",
+      gameTitle: 'Saints Row 3',
       consoleId: '3',
-      codeTitle: "More Money",
-      code: "down-up-right-right-R1-R2-A-A-Y",
+      codeTitle: 'More Money',
+      code: 'down-up-right-right-R1-R2-A-A-Y',
       userId: 2,
-      id: 4
+      id: 4,
     },
     {
-      gameTitle: "Stardew Valley",
+      gameTitle: 'Stardew Valley',
       consoleId: '2',
-      codeTitle: "More Money",
-      code: "down-up-right-right-R1-R2",
+      codeTitle: 'More Money',
+      code: 'down-up-right-right-R1-R2',
       userId: 1,
-      id: 5
+      id: 5,
     },
     {
-      gameTitle: "Pokemon",
+      gameTitle: 'Pokemon',
       consoleId: '3',
-      codeTitle: "Skip Intro",
-      code: "B05557898BBD",
+      codeTitle: 'Skip Intro',
+      code: 'B05557898BBD',
       userId: 1,
-      id: 6
+      id: 6,
     },
     {
-      gameTitle: "Pokemon",
+      gameTitle: 'Pokemon',
       consoleId: '3',
-      codeTitle: "Skip Intro",
-      code: "B05557898BBD",
+      codeTitle: 'Skip Intro',
+      code: 'B05557898BBD',
       userId: 2,
-      id: 7
+      id: 7,
     },
     {
-      gameTitle: "The Sims",
+      gameTitle: 'The Sims',
       consoleId: '3',
-      codeTitle: "Money",
-      code: "RoseBud",
+      codeTitle: 'Money',
+      code: 'RoseBud',
       userId: 2,
-      id: 8
+      id: 8,
     },
     {
-      gameTitle: "The Sims",
+      gameTitle: 'The Sims',
       consoleId: '3',
-      codeTitle: "Money",
-      code: "RoseBud",
+      codeTitle: 'Money',
+      code: 'RoseBud',
       userId: 1,
-      id: 9
+      id: 9,
     },
     {
-      gameTitle: "The Sims",
+      gameTitle: 'The Sims',
       consoleId: '3',
-      codeTitle: "Speed Up Time",
-      code: "Speed",
+      codeTitle: 'Speed Up Time',
+      code: 'Speed',
       userId: 1,
-      id: 10
+      id: 10,
     },
     {
-      gameTitle: "GTA 5",
+      gameTitle: 'GTA 5',
       consoleId: '1',
-      codeTitle: "All Weapons",
-      code: "Enter Y, RT, Left, LB, A, Right, Y, Down, X, LB(3)",
+      codeTitle: 'All Weapons',
+      code: 'Enter Y, RT, Left, LB, A, Right, Y, Down, X, LB(3)',
       userId: 1,
-      id: 11
+      id: 11,
     },
     {
-      gameTitle: "Sims 4",
+      gameTitle: 'Sims 4',
       consoleId: '3',
-      codeTitle: "50,000 Simoleons",
-      code: "MotherLoad",
+      codeTitle: '50,000 Simoleons',
+      code: 'MotherLoad',
       userId: 1,
-      id: 12
+      id: 12,
     },
     {
-      gameTitle: "Sims 4",
+      gameTitle: 'Sims 4',
       consoleId: '3',
-      codeTitle: "50,000 Simoleons",
-      code: "MotherLoad",
+      codeTitle: '50,000 Simoleons',
+      code: 'MotherLoad',
       userId: 2,
-      id: 13
+      id: 13,
     },
     {
-      gameTitle: "Sims 4",
+      gameTitle: 'Sims 4',
       consoleId: '3',
-      codeTitle: "50,000 Simoleons",
-      code: "MotherLoad",
+      codeTitle: '50,000 Simoleons',
+      code: 'MotherLoad',
       userId: 3,
-      id: 14
-    }
+      id: 14,
+    },
   ],
 };
 
