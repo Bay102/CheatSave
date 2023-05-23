@@ -1,13 +1,12 @@
 .container {
-   position: absolute;
-   right: 250px;
-   top: 100px;
-   border-radius: 10px;
-   width: 150px;
-   height: max-content;
-   background-color: white;
-   color: black;
-   padding: 20px;
-   z-index: 200;
+  position: absolute;
+  right: 250px;
+  top: 100px;
+  border-radius: 10px;
+  width: 150px;
+  height: max-content;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  z-index: 200;
 }
-

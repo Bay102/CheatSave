@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       localStorage.setItem('user', JSON.stringify(user));
     }
   };
-  
+
   const logOut = () => {
     setUser(null);
     localStorage.removeItem('user');

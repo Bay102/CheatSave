@@ -48,7 +48,7 @@ export type RegisterParams = {
 export type LoginParams = {
   username: string;
   password: string;
-}
+};
 
 export type User = {
   username: string;
@@ -75,7 +75,7 @@ export type ConsoleType = {
 };
 
 export type FilterParams = {
-  codes: CheatCode[], 
-  searchTerm: string, 
-  consoleID: string
-}
+  codes: CheatCode[];
+  searchTerm: string;
+  consoleID: string;
+};

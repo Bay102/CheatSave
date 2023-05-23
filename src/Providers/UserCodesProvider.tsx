@@ -13,18 +13,21 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
   const [consoleFilter, setConsoleFilter] = useState('');
 
   const fetchCodes = () => {
-    if (user) 
-    getUsersCodes(user.id).then((codes) => setUsersCodes(codes));
+    if (user) getUsersCodes(user.id).then((codes) => setUsersCodes(codes));
   };
 
-  const handleDelete = ( 
+  const handleDelete = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     const id = event.currentTarget.dataset.id;
     deleteCheat(id).then(() => fetchCodes());
   };
 
-  const filterCodes = ( codes: CheatCode[], searchTerm: string, consoleID: string ) => {
+  const filterCodes = (
+    codes: CheatCode[],
+    searchTerm: string,
+    consoleID: string
+  ) => {
     if (searchTerm && consoleID) {
       return codes.filter(
         (code: CheatCode) =>

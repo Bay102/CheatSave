@@ -23,7 +23,6 @@ export const CodeFilter: React.FC = () => {
           placeholder="Search By Game..."
         />
       </label>
-
       <label htmlFor="">
         By Console:
         <select
@@ -40,7 +39,6 @@ export const CodeFilter: React.FC = () => {
           ))}
         </select>
       </label>
-
       <button
         onClick={() =>
           showNewGame ? setShowNewGame(false) : setShowNewGame(true)

@@ -7,7 +7,6 @@ import { AppProvider } from './Providers/AppProvider';
 import { UserCodesProvider } from './Providers/UserCodesProvider';
 import { CheatCC } from './Components/CheatCC_IFrame/CheatCC';
 
-
 function App() {
   return (
     <AuthProvider>

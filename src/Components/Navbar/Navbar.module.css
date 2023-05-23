@@ -1,18 +1,18 @@
 .nav_container {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .nav_list {
-   display: flex;
-   text-align: center;
-   gap: 10px;
-   justify-content: center;
-   align-items: baseline;
+  display: flex;
+  text-align: center;
+  gap: 10px;
+  justify-content: center;
+  align-items: baseline;
 }
 
 .nav_container_hidden {
-   display: none;
+  display: none;
 }
