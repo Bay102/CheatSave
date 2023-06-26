@@ -1,16 +1,13 @@
+
+import { API_CONFIG } from "../config";
+
+
+
 export const getUsersCodes = (userId: number) =>
-  fetch('http://localhost:3000/users_CheatCodes')
+  fetch(`${API_CONFIG.baseUrl}codes/${userId}`)
     .then((response) => {
       if (!response.ok) {
-        throw new Error('Error finding user');
+        throw new Error('Error finding user codes');
       }
       return response.json();
-    })
-
-    .then((codes) => codes.filter((code: any) => code.userId === userId))
-    .then((codes) => {
-      if (!codes) {
-        throw new Error('Error Finding Codes');
-      }
-      return codes;
     });

@@ -10,9 +10,11 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
   const [showNewGame, setShowNewGame] = useState(false);
   const [consoles, setConsoles] = useState([]);
 
-  // useEffect(() => {
-  //   getConsoles().then((consoles) => setConsoles(consoles));
-  // }, []);
+  useEffect(() => {
+    getConsoles().then((consoles) => setConsoles(consoles));
+  }, []);
+
+  console.log(consoles);
 
   return (
     <AppContext.Provider

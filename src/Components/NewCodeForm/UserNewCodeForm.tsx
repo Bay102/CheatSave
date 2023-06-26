@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './UserNewCodeForm.module.css';
-import { addGame } from '../../Api/add-code';
+import { addCode } from '../../Api/add-code';
 import { useAuthProvider } from '../../Providers/AuthProvider';
 import { toast } from 'react-toastify';
 import { useUserCodesProvider } from '../../Providers/UserCodesProvider';
@@ -8,23 +8,36 @@ import { useAppProvider } from '../../Providers/AppProvider';
 import { ConsoleType } from '../../Types';
 
 export const UserNewCodeForm: React.FC = () => {
-  const [gameTitle, setGameTitle] = useState('');
-  const [console, setConsole] = useState<string>('');
-  const [codeTitle, setCodeTitle] = useState('');
-  const [code, setCode] = useState('');
+  //| Provider Stuff
+  const { user, authToken } = useAuthProvider();
 
   const { setShowNewGame, consoles } = useAppProvider();
-  const { user } = useAuthProvider();
   const { fetchCodes } = useUserCodesProvider();
 
+  //| Input States
+  const [gameTitle, setGameTitle] = useState('');
+  const [consoleName, setConsoleName] = useState<string>('');
+  const [codeTitle, setCodeTitle] = useState('');
+  const [code, setCode] = useState('');
+  //|
+
+  //> Need to write function to tie consoleId together
   const handleCodeSubmit = () => {
     if (user)
-      if (gameTitle && codeTitle && console && code) {
-        addGame(gameTitle, console, codeTitle, code, user.id).then(() =>
-          fetchCodes()
+      if (authToken && gameTitle && codeTitle && code) {
+        addCode(
+          user.userId,
+          gameTitle,
+          consoleName,
+          codeTitle,
+          code,
+          authToken
         );
+        // .then(
+        //   () => fetchCodes()
+        // );
         setGameTitle('');
-        setConsole('');
+        setConsoleName('');
         setCodeTitle('');
         setCode('');
         setShowNewGame(false);
@@ -50,15 +63,15 @@ export const UserNewCodeForm: React.FC = () => {
         <label htmlFor="console">
           Console:
           <select
-            onChange={(e) => setConsole(e.target.value)}
-            value={console}
+            onChange={(e) => setConsoleName(e.target.value)}
+            value={consoleName}
             name=""
             id=""
           >
             <option>Select...</option>
             {consoles.map((console: ConsoleType, index) => (
               <option value={index} key={index}>
-                {console.console}
+                {console.consoleName}
               </option>
             ))}
           </select>

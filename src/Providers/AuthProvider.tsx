@@ -3,24 +3,13 @@ import { registerFetch } from '../Api/User/register';
 import { AuthContextType, LoginParams, RegisterParams, User } from '../Types';
 import { toast } from 'react-toastify';
 import { getUserFromServer } from '../Api/User/get-user';
-import { checkIfUserExists } from '../Api/check-if-username-isTaken';
-import { API_CONFIG } from '../Api/config';
 
 const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState(null);
 
-  //>TEST FETCH
-  const fetchUsers = async () => {
-    await fetch(`${API_CONFIG.baseUrl}users`, {
-      method: 'GET',
-      mode: 'cors',
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
-  };
+  const authToken = user?.token;
 
   // useEffect(() => {
   //   const maybeUser = localStorage.getItem('user');
@@ -88,7 +77,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, setUser, register, logOut, logIn }}>
+    <AuthContext.Provider
+      value={{ authToken, user, setUser, register, logOut, logIn }}
+    >
       {children}
     </AuthContext.Provider>
   );

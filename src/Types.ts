@@ -1,5 +1,6 @@
 export type AuthContextType = {
-  user: User | null ;
+  authToken: string;
+  user: User | null;
   setUser: React.Dispatch<React.SetStateAction<null>>;
   register: (input: RegisterParams) => void | Promise<void>;
   logOut: () => void;
@@ -51,8 +52,10 @@ export type LoginParams = {
 };
 
 export type User = {
+  userId: number;
   username: string;
-  password: string;
+  token?: string | null;
+  userInformation: any;
 };
 
 export type Event = {
@@ -70,7 +73,7 @@ export type CheatCode = {
 
 export type ConsoleType = {
   id: number;
-  console: string;
+  consoleName: string;
 };
 
 export type FilterParams = {

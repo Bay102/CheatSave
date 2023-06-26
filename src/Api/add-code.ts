@@ -1,30 +1,39 @@
 import { API_CONFIG } from './config';
 
-export const addGame = (
+export const addCode = async (
+  userId: number,
   gameTitle: string,
-  console: string,
+  consoleName: string,
   codeTitle: string,
   code: string,
-  userId: number
+  authToken: string
 ) => {
   const newCode = {
-    gameTitle: gameTitle,
-    consoleId: console,
-    codeTitle: codeTitle,
-    code: code,
-    userId: userId,
+    userId,
+    gameTitle,
+    consoleName,
+    codeTitle,
+    code,
   };
 
-  return fetch(API_CONFIG.baseUrl + `/users_CheatCodes`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(newCode),
-  }).then((response) => {
+  console.log(authToken);
+
+  try {
+    const response = await fetch(`${API_CONFIG.baseUrl}user/newcode`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify(newCode),
+    });
     if (!response.ok) {
-      throw new Error('Failed to Add Game');
+      throw new Error('Request failed');
     }
-    return response.json();
-  });
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 };
