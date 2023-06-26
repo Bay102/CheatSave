@@ -12,18 +12,16 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
   const [userSearch, setUserSearch] = useState('');
   const [consoleFilter, setConsoleFilter] = useState('');
 
-  //> This needs to be converted to a endpoint
   const fetchCodes = () => {
     if (user) getUsersCodes(user.userId).then((codes) => setUsersCodes(codes));
   };
 
-  //> This needs to be converted to a endpoint
-  // const handleDelete = (
-  //   event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  // ) => {
-  //   const id = event.currentTarget.dataset.id;
-  //   deleteCheat(id).then(() => fetchCodes());
-  // };
+  const handleDelete = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    const id = event.currentTarget.dataset.id;
+    deleteCheat(id).then(() => fetchCodes());
+  };
 
   const filterCodes = (
     codes: CheatCode[],
@@ -34,7 +32,7 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
       return codes.filter(
         (code: CheatCode) =>
           code.gameTitle.toLowerCase().includes(searchTerm.toLowerCase()) &&
-          code.consoleId === consoleID
+          code.consoleName === consoleID
       );
     }
     if (searchTerm) {
@@ -43,7 +41,7 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
       );
     }
     if (consoleID) {
-      return codes.filter((code: CheatCode) => code.consoleId === consoleID);
+      return codes.filter((code: CheatCode) => code.consoleName === consoleID);
     }
     return codes;
   };
@@ -56,7 +54,7 @@ export const UserCodesProvider = ({ children }: { children: JSX.Element }) => {
         fetchCodes,
         usersCodes: filteredCodes,
         setUsersCodes,
-        // handleDelete,
+        handleDelete,
         userSearch,
         setUserSearch,
         consoleFilter,

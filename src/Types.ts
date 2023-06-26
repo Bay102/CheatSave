@@ -64,7 +64,7 @@ export type Event = {
 
 export type CheatCode = {
   gameTitle: string;
-  consoleId: string;
+  consoleName: string;
   codeTitle: string;
   code: string;
   userId: number;

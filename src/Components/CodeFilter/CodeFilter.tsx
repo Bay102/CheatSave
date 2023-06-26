@@ -33,8 +33,8 @@ export const CodeFilter: React.FC = () => {
         >
           <option value={''}>Select..</option>
           {consoles.map((consoleItem: ConsoleType, index) => (
-            <option value={index} key={index}>
-              {consoleItem.console}
+            <option value={consoleItem.consoleName} key={index}>
+              {consoleItem.consoleName}
             </option>
           ))}
         </select>

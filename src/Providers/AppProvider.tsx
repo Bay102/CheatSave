@@ -14,8 +14,6 @@ export const AppProvider = ({ children }: { children: JSX.Element }) => {
     getConsoles().then((consoles) => setConsoles(consoles));
   }, []);
 
-  console.log(consoles);
-
   return (
     <AppContext.Provider
       value={{

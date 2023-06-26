@@ -32,10 +32,7 @@ export const UserNewCodeForm: React.FC = () => {
           codeTitle,
           code,
           authToken
-        );
-        // .then(
-        //   () => fetchCodes()
-        // );
+        ).then(() => fetchCodes());
         setGameTitle('');
         setConsoleName('');
         setCodeTitle('');
@@ -70,7 +67,7 @@ export const UserNewCodeForm: React.FC = () => {
           >
             <option>Select...</option>
             {consoles.map((console: ConsoleType, index) => (
-              <option value={index} key={index}>
+              <option value={console.consoleName} key={index}>
                 {console.consoleName}
               </option>
             ))}

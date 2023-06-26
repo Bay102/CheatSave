@@ -19,7 +19,7 @@ export const UserComponent: React.FC = () => {
     <div className={styles.user_components_container}>
       <div className={styles.user_icon}>
         <div onClick={() => setNavDisplay()} className="user_name">
-          {user ? user.username : 'SignIn'}
+          {user ? user.userInformation.username : 'SignIn'}
         </div>
         <FontAwesomeIcon
           className={styles.userIcon}

@@ -29,21 +29,6 @@ export const UserData: React.FC = () => {
     };
   }, []);
 
-  const setConsoleTitle = (consoleId: number) => {
-    switch (consoleId) {
-      case 0:
-        return 'Xbox One';
-      case 1:
-        return 'PS4';
-      case 2:
-        return 'PC';
-      case 3:
-        return 'Nintendo Switch';
-      default:
-        return 'Unknown Console';
-    }
-  };
-
   const [dragIndex, setDragIndex] = useState<number | null>(null);
   const [hoverIndex, setHoverIndex] = useState<null | number>(null);
 
@@ -102,7 +87,7 @@ export const UserData: React.FC = () => {
                   <div className={styles.name_console}>
                     <div className={styles.game_name}>{code.gameTitle}</div>
                     <div className={styles.game_console}>
-                      {setConsoleTitle(+code.consoleId)}
+                      {code.consoleName}
                     </div>
                   </div>
                   <div className={styles.game_codeTitle}>{code.codeTitle}:</div>

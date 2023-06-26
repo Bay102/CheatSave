@@ -1,7 +1,9 @@
+import { API_CONFIG } from "../config";
+
 export const deleteCheat = (cheatCodeId: string | undefined) => {
   console.log(cheatCodeId);
 
-  return fetch(`http://localhost:3000/users_CheatCodes/${cheatCodeId}`, {
+  return fetch(`${API_CONFIG.baseUrl}${cheatCodeId}/delete`, {
     method: 'DELETE',
   })
     .then((response) => response.json())
