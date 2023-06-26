@@ -1,30 +1,42 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { registerFetch } from '../Api/User/register';
-import { AuthContextType, LoginParams, RegisterParams } from '../Types';
+import { AuthContextType, LoginParams, RegisterParams, User } from '../Types';
 import { toast } from 'react-toastify';
 import { getUserFromServer } from '../Api/User/get-user';
 import { checkIfUserExists } from '../Api/check-if-username-isTaken';
+import { API_CONFIG } from '../Api/config';
 
 const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const maybeUser = localStorage.getItem('user');
-    if (maybeUser) {
-      setUser(JSON.parse(maybeUser));
-    }
-  }, []);
+  //>TEST FETCH
+  const fetchUsers = async () => {
+    await fetch(`${API_CONFIG.baseUrl}users`, {
+      method: 'GET',
+      mode: 'cors',
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
+  };
 
+  // useEffect(() => {
+  //   const maybeUser = localStorage.getItem('user');
+  //   if (maybeUser) {
+  //     setUser(JSON.parse(maybeUser));
+  //   }
+  // }, []);
+
+  //* get help typing this
   const logIn = async ({ username, password }: LoginParams) => {
-    const user = await getUserFromServer({ username });
-    if (user.password !== password) {
-      throw new Error('invalid password');
-    } else {
-      toast.success(`Welcome ${username.toUpperCase()}`);
-      setUser(user);
-      localStorage.setItem('user', JSON.stringify(user));
+    try {
+      await getUserFromServer({ username, password }).then((user) =>
+        setUser(user)
+      );
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -35,18 +47,44 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       toast.info('Logged Out');
     }
   };
+  // const register = async ({ username, password }: RegisterParams) => {
+  //   const UserExists = await checkIfUserExists(username);
+  //   if (username && password) {
+  //     if (!UserExists) {
+  //       return registerFetch({ username, password }).then((user) => {
+  //         localStorage.setItem('user', JSON.stringify(user));
+  //         setUser(user);
+  //       });
+  //     }
+  //   } else {
+  //     toast.info('Fields are empty');
+  //   }
+  // };
+
   const register = async ({ username, password }: RegisterParams) => {
-    const UserExists = await checkIfUserExists(username);
-    if (username && password) {
-      if (!UserExists) {
-        return registerFetch({ username, password }).then((user) => {
-          localStorage.setItem('user', JSON.stringify(user));
-          setUser(user);
-        });
-      }
-    } else {
-      toast.info('Fields are empty');
-    }
+    await fetch('https://localhost:3000/user/create', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Request failed');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data); // Process the response data (created user details)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (

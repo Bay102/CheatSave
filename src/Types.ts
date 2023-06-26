@@ -1,5 +1,5 @@
 export type AuthContextType = {
-  user: User | null;
+  user: User | null ;
   setUser: React.Dispatch<React.SetStateAction<null>>;
   register: (input: RegisterParams) => void | Promise<void>;
   logOut: () => void;
@@ -53,7 +53,6 @@ export type LoginParams = {
 export type User = {
   username: string;
   password: string;
-  id: number;
 };
 
 export type Event = {

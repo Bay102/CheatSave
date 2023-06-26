@@ -10,10 +10,9 @@ export const SignUp: React.FC = () => {
   const [userPassword, setUserPassword] = useState<string>('');
   const [confirmPassword, setConfirmUserPassword] = useState<string>('');
 
-  const { user, logOut } = useAuthProvider();
+  const { user, logOut ,register} = useAuthProvider();
   const { setShowNav, setDisplay } = useAppProvider();
-  const { register } = useAuthProvider();
-
+  
   const userCredentials = {
     username: username,
     password: userPassword,

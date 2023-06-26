@@ -14,7 +14,7 @@ function App() {
         <UserCodesProvider>
           <div className="App">
             <ToastContainer position="top-center" autoClose={1000} />
-            <CheatCC />
+            {/* <CheatCC /> */}
             <UserComponent />
           </div>
         </UserCodesProvider>

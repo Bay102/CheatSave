@@ -1,19 +1,56 @@
-import { User } from '../../Types';
+import { LoginParams } from '../../Types';
+import { API_CONFIG } from '../config';
 
-export const getUserFromServer = ({ username }: { username: string }) =>
-  fetch('http://localhost:3000/users')
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Error finding user');
-      }
-      return response.json();
-    })
-    .then((users) =>
-      users.find((user: User) => user.username === username.toLowerCase())
-    )
-    .then((user) => {
-      if (!user) {
-        throw new Error('no user found');
-      }
-      return user;
+
+
+// export const getUserFromServer = async ({username, password}: LoginParams) => {  
+//   await fetch(`${API_CONFIG.baseUrl}user/login`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({
+//       username,
+//       password,
+//     }),
+//   })
+//     .then((response) => {      
+//       if (!response.ok) {
+//         throw new Error('Request failed');
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       console.log({data});
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//     })
+// }
+
+
+export const getUserFromServer = async ({ username, password }: LoginParams) => {
+  try {
+    const response = await fetch(`${API_CONFIG.baseUrl}user/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
     });
+
+    if (!response.ok) {
+      throw new Error('Request failed');
+    }
+
+    const data = await response.json();
+    console.log( data );
+
+    return data; // Return the response JSON
+  } catch (error) {
+    console.error(error);
+  }
+};
