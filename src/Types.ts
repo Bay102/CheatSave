@@ -1,7 +1,7 @@
 export type AuthContextType = {
-  authToken: string;
+  authToken: string | null | undefined;
   user: User | null;
-  setUser: React.Dispatch<React.SetStateAction<null>>;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
   register: (input: RegisterParams) => void | Promise<void>;
   logOut: () => void;
   logIn: ({

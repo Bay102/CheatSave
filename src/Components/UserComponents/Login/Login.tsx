@@ -5,11 +5,11 @@ import { toast } from 'react-toastify';
 import { useAppProvider } from '../../../Providers/AppProvider';
 
 export const Login: React.FC = () => {
-  const [username, setUsername] = useState<string>('');
-  const [userPassword, setUserPassword] = useState<string>('');
-
   const { user, logIn, logOut } = useAuthProvider();
   const { setShowNav, setDisplay } = useAppProvider();
+
+  const [username, setUsername] = useState<string>('');
+  const [userPassword, setUserPassword] = useState<string>('');
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,11 +17,7 @@ export const Login: React.FC = () => {
       logOut();
     }
     if (username && userPassword) {
-      logIn({ username: username, password: userPassword }).catch((e) => {
-        toast.error(e.message);
-      });
-      setShowNav(false);
-      setDisplay('');
+      logIn({ username: username, password: userPassword });
     } else toast.error('Silly! You didnt type anything!');
   };
 

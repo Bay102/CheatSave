@@ -9,8 +9,8 @@ import { CheatCC } from './Components/CheatCC_IFrame/CheatCC';
 
 function App() {
   return (
-    <AuthProvider>
-      <AppProvider>
+    <AppProvider>
+      <AuthProvider>
         <UserCodesProvider>
           <div className="App">
             <ToastContainer position="top-center" autoClose={1000} />
@@ -18,8 +18,8 @@ function App() {
             <UserComponent />
           </div>
         </UserCodesProvider>
-      </AppProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </AppProvider>
   );
 }
 

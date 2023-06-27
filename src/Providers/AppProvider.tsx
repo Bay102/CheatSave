@@ -5,7 +5,7 @@ import { AppContextType } from '../Types';
 const AppContext = createContext({} as AppContextType);
 
 export const AppProvider = ({ children }: { children: JSX.Element }) => {
-  const [display, setDisplay] = useState('');
+  const [display, setDisplay] = useState('login');
   const [showNav, setShowNav] = useState<boolean>(true);
   const [showNewGame, setShowNewGame] = useState(false);
   const [consoles, setConsoles] = useState([]);

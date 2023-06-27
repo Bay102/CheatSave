@@ -16,8 +16,6 @@ export const addCode = async (
     code,
   };
 
-  console.log(authToken);
-
   try {
     const response = await fetch(`${API_CONFIG.baseUrl}user/newcode`, {
       method: 'POST',

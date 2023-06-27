@@ -19,8 +19,8 @@
 
 .user_icon {
    position: absolute;
-   right: 0px;
-   top: 0px;
+   right: 25px;
+   top: 10px;
    display: flex;
    background-color: black;
    padding: 5px 10px;

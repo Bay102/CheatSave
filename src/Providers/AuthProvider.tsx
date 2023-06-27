@@ -1,14 +1,15 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { registerFetch } from '../Api/User/register';
 import { AuthContextType, LoginParams, RegisterParams, User } from '../Types';
 import { toast } from 'react-toastify';
 import { getUserFromServer } from '../Api/User/get-user';
 import { API_CONFIG } from '../Api/config';
+import { useAppProvider } from './AppProvider';
 
 const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
+  const { setShowNav, setDisplay } = useAppProvider();
 
   const authToken = user?.token;
 
@@ -19,14 +20,16 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     }
   }, []);
 
-  //* get help typing this
   const logIn = async ({ username, password }: LoginParams) => {
     try {
-      await getUserFromServer({ username, password }).then((user) =>
-        setUser(user)
-      );
-    } catch (error) {
-      console.error(error);
+      const user = await getUserFromServer({ username, password });
+      if (user) {
+        setShowNav(false);
+        setDisplay('');
+        return setUser(user);
+      } else toast.error('Incorrect Username/Password');
+    } catch (e) {
+      console.error(e);
     }
   };
 
