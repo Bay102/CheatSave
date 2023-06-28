@@ -22,10 +22,10 @@ export const UserNewCodeForm: React.FC = () => {
   //|
 
   //> Need to write function to tie consoleId together
-  const handleCodeSubmit = () => {
+  const handleCodeSubmit = async () => {
     if (user)
       if (authToken && gameTitle && codeTitle && code) {
-        addCode(
+        await addCode(
           user.userId,
           gameTitle,
           consoleName,

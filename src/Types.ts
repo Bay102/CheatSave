@@ -2,7 +2,7 @@ export type AuthContextType = {
   authToken: string | null | undefined;
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
-  register: (input: RegisterParams) => void | Promise<void>;
+  registerUser: (input: RegisterParams) => void | Promise<void> ;
   logOut: () => void;
   logIn: ({
     username,
@@ -36,9 +36,13 @@ export type UsersCodeContextType = {
   fetchCodes: () => void;
 };
 
+type ToastError = {
+  message: string;
+  code?: number;
+};
+
 export type NavBarTypes = {
-  login: JSX.Element;
-  signUp: JSX.Element;
+  [key: string]: JSX.Element | string;
 };
 
 export type RegisterParams = {

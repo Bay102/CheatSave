@@ -2,8 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContextType, LoginParams, RegisterParams, User } from '../Types';
 import { toast } from 'react-toastify';
 import { getUserFromServer } from '../Api/User/get-user';
-import { API_CONFIG } from '../Api/config';
 import { useAppProvider } from './AppProvider';
+import { register } from '../Api/User/register';
 
 const AuthContext = createContext({} as AuthContextType);
 
@@ -41,32 +41,19 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     }
   };
 
-  const register = async ({ username, password }: RegisterParams) => {
-    await fetch(`${API_CONFIG.baseUrl}user/create`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Request failed');
-        }
-        return response.json();
+  const registerUser = async (userCredentials: RegisterParams) => {
+    await register(userCredentials)
+      .then(() => {
+        toast.success('User Created');
       })
-
-      .catch((error) => {
-        console.error(error);
+      .catch((e) => {
+        toast.error(e?.message || 'UserName Taken');
       });
   };
 
   return (
     <AuthContext.Provider
-      value={{ authToken, user, setUser, register, logOut, logIn }}
+      value={{ authToken, user, setUser, registerUser, logOut, logIn }}
     >
       {children}
     </AuthContext.Provider>

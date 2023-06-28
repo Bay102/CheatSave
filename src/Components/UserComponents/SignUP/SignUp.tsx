@@ -4,13 +4,14 @@ import { useAuthProvider } from '../../../Providers/AuthProvider';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAppProvider } from '../../../Providers/AppProvider';
+import { register } from '../../../Api/User/register';
 
 export const SignUp: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
   const [confirmPassword, setConfirmUserPassword] = useState<string>('');
 
-  const { user, logOut, register } = useAuthProvider();
+  const { user, logOut, registerUser } = useAuthProvider();
   const { setShowNav, setDisplay } = useAppProvider();
 
   const userCredentials = {
@@ -31,10 +32,10 @@ export const SignUp: React.FC = () => {
       logOut();
     }
     if (username && userPassword && matchPasswords()) {
-      register(userCredentials);
+      registerUser(userCredentials);
       setUsername('');
       setUserPassword('');
-      setDisplay('login');
+      // setDisplay('login');
     }
   };
 

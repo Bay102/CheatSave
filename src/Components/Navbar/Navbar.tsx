@@ -4,11 +4,12 @@ import { SignUp } from '../UserComponents/SignUP/SignUp';
 import styles from './Navbar.module.css';
 import React from 'react';
 import { useAppProvider } from '../../Providers/AppProvider';
+import { NavBarTypes } from '../../Types';
 
 export const Navbar: React.FC = () => {
   const { display, setDisplay } = useAppProvider();
 
-  const navbarOptions: any = {
+  const navbarOptions: NavBarTypes = {
     login: <Login />,
     signUp: <SignUp />,
   };

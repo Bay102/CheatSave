@@ -7,7 +7,7 @@
 .user_form_inputs {
    display: flex;
    flex-direction: column;
-   margin: auto;
+   margin: 50px auto;
    background-color: #f4f6f76d;
    padding: 20px;
    width: max-content;
