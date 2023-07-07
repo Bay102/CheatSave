@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import styles from './Login.module.css';
 import { useAuthProvider } from '../../../Providers/AuthProvider';
 import { toast } from 'react-toastify';
-import { useAppProvider } from '../../../Providers/AppProvider';
 
 export const Login: React.FC = () => {
   const { user, logIn, logOut } = useAuthProvider();
-  const { setShowNav, setDisplay } = useAppProvider();
 
   const [username, setUsername] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
@@ -18,7 +16,7 @@ export const Login: React.FC = () => {
     }
     if (username && userPassword) {
       logIn({ username: username, password: userPassword });
-    } else toast.error('Silly! You didnt type anything!');
+    } else toast.error('All fields are required');
   };
 
   return (

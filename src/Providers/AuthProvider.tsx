@@ -26,7 +26,8 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       if (user) {
         setShowNav(false);
         setDisplay('');
-        return setUser(user);
+        setUser(user);
+        localStorage.setItem('user', JSON.stringify(user));
       } else toast.error('Incorrect Username/Password');
     } catch (e) {
       console.error(e);

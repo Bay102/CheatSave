@@ -3,8 +3,6 @@ import styles from './SignUp.module.css';
 import { useAuthProvider } from '../../../Providers/AuthProvider';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useAppProvider } from '../../../Providers/AppProvider';
-import { register } from '../../../Api/User/register';
 
 export const SignUp: React.FC = () => {
   const [username, setUsername] = useState<string>('');
@@ -12,7 +10,6 @@ export const SignUp: React.FC = () => {
   const [confirmPassword, setConfirmUserPassword] = useState<string>('');
 
   const { user, logOut, registerUser } = useAuthProvider();
-  const { setShowNav, setDisplay } = useAppProvider();
 
   const userCredentials = {
     username: username,
@@ -35,7 +32,7 @@ export const SignUp: React.FC = () => {
       registerUser(userCredentials);
       setUsername('');
       setUserPassword('');
-      // setDisplay('login');
+      setConfirmUserPassword('');
     }
   };
 
